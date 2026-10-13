@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.2 Ekspresi Menjelaskan Prosedur Keselamatan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Menyembunyikan scrollbar horizontal kartu */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-between overflow-y-auto">
+
+    <!-- Header / Navbar -->
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
+            </div>
+
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h18"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="index.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
+            <a href="unit 1.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 2: Safety Procedures</a>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 w-full">
+    
+    <!-- CARD WRAPPER MAIN -->
+    <div class="bg-white p-6 sm:p-8 md:p-10 rounded-3xl border border-slate-200 shadow-xl w-full flex flex-col space-y-6">
+        
+        <!-- Title Header -->
+        <h2 class="text-xl sm:text-xl font-bold text-slate-900 border-b border-slate-100 pb-3">
+            A.2 Ekspresi Menjelaskan Prosedur Keselamatan
+        </h2>
+
+        <!-- HORIZONTAL SCROLL CONTAINER (Scroll Kartu Ke Samping) -->
+        <div id="scroll-container" class="w-full overflow-x-auto no-scrollbar pt-2 pb-6 cursor-grab active:cursor-grabbing select-none">
+            <div class="inline-flex gap-5 px-2">
+
+                <!-- Note A: Opening a Safety Briefing -->
+                <div class="w-72 sm:w-80 bg-[#E2F0D9] border-2 border-slate-800 p-5 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] shrink-0 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-sm sm:text-base text-slate-900 mb-2">A. Opening a Safety Briefing</h3>
+                        <p class="text-xs text-slate-700 leading-relaxed mb-4 text-justify">
+                            Digunakan untuk memulai pengarahan keselamatan sebelum aktivitas berlangsung. Ekspresi ini membantu tour guide mendapatkan perhatian wisatawan dan menekankan bahwa informasi keselamatan penting untuk diperhatikan.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-900 font-medium list-disc list-inside">
+                            <li>"Before we start, I need to explain a few safety procedures."</li>
+                            <li>"Please listen carefully for a moment."</li>
+                            <li>"Your safety is our top priority, so please pay attention."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Note B: Giving Instructions & Rules -->
+                <div class="w-72 sm:w-80 bg-[#D9E1F2] border-2 border-slate-800 p-5 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] shrink-0 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-sm sm:text-base text-slate-900 mb-2">B. Giving Instructions & Rules</h3>
+                        <p class="text-xs text-slate-700 leading-relaxed mb-4 text-justify">
+                            Digunakan untuk menyampaikan tindakan yang harus atau tidak boleh dilakukan wisatawan selama aktivitas. Tour guide perlu memberikan instruksi dengan jelas agar wisatawan memahami aturan keselamatan.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-900 font-medium list-disc list-inside">
+                            <li>"You must wear a life jacket at all times."</li>
+                            <li>"Please stay close to the guide."</li>
+                            <li>"Make sure to hold the handrail on the way down."</li>
+                            <li>"Do not touch the coral / Do not go beyond the marked area."</li>
+                            <li>"It's mandatory to wear a helmet during this activity."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Note C: Explaining Emergency Procedures -->
+                <div class="w-72 sm:w-80 bg-[#FCE4D6] border-2 border-slate-800 p-5 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] shrink-0 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-sm sm:text-base text-slate-900 mb-2">C. Explaining Emergency Procedures</h3>
+                        <p class="text-xs text-slate-700 leading-relaxed mb-4 text-justify">
+                            Digunakan untuk menjelaskan apa yang harus dilakukan wisatawan ketika terjadi keadaan darurat atau ketika mereka mengalami kondisi yang berisiko.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-900 font-medium list-disc list-inside">
+                            <li>"In case of emergency, blow this whistle and stay where you are."</li>
+                            <li>"If you feel dizzy or tired, let me know immediately."</li>
+                            <li>"If it starts to rain, we will stop and take shelter here."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Note D: Checking Understanding & Compliance -->
+                <div class="w-72 sm:w-80 bg-[#E8D9F2] border-2 border-slate-800 p-5 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] shrink-0 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-sm sm:text-base text-slate-900 mb-2">D. Checking Understanding & Compliance</h3>
+                        <p class="text-xs text-slate-700 leading-relaxed mb-4 text-justify">
+                            Digunakan setelah memberikan instruksi untuk memastikan wisatawan benar-benar memahami aturan keselamatan.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-900 font-medium list-disc list-inside">
+                            <li>"Is everyone clear on the procedure?"</li>
+                            <li>"Any questions before we begin?"</li>
+                            <li>"Please raise your hand if anything is unclear."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Note E: Closing the Briefing -->
+                <div class="w-72 sm:w-80 bg-[#F8CECC] border-2 border-slate-800 p-5 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] shrink-0 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-sm sm:text-base text-slate-900 mb-2">E. Closing the Briefing</h3>
+                        <p class="text-xs text-slate-700 leading-relaxed mb-4 text-justify">
+                            Digunakan untuk mengakhiri pengarahan keselamatan setelah semua informasi penting disampaikan. Tour guide dapat menutup briefing dengan mengapresiasi kerja sama wisatawan dan mengingatkan mereka untuk tetap aman selama aktivitas.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-900 font-medium list-disc list-inside">
+                            <li>"Thank you for your cooperation. Let's begin"</li>
+                            <li>"Stay safe and enjoy the activity!"</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom Navigation Button (Tetap Terlihat / Buka Akses Scroll Vertikal) -->
+        <div class="flex justify-end pt-6 border-t border-slate-100">
+            <a href="pronun 2.html" onclick="nextPage()" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs sm:text-sm font-semibold px-8 py-2.5 rounded-full transition-all shadow-md">
+                Next
+            </a>
+        </div>
+
+    </div>
+</main>
+
+    <!-- JavaScript Handling -->
+    <script>
+        // Navbar Mobile Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Mouse Wheel & Drag Horizontal Scroll Logic
+        const scrollContainer = document.getElementById('scroll-container');
+
+        // 1. Mengubah scroll roda mouse vertikal menjadi scroll horizontal
+        scrollContainer.addEventListener('wheel', (evt) => {
+            evt.preventDefault();
+            scrollContainer.scrollLeft += evt.deltaY * 1.5;
+        }, { passive: false });
+
+        // 2. Klik & Seret dengan Mouse (Mouse Drag to Scroll)
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+        });
+
+        scrollContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        scrollContainer.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 2; // Kecepatan drag
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>

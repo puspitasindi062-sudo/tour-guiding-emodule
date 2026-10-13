@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.4 Dialogue Model - Tour Guiding E-Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar (Fixed di Atas) -->
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md w-full flex-shrink-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="index.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
+            <a href="unit 1.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 2: Safety Procedures</a>
+        </nav>
+    </header>
+
+    <!-- Main Container Card -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-grow w-full">
+        
+        <!-- TOP NAVIGATION BUTTONS (TABS) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mb-6">
+            
+            <!-- Tab 1 Button -->
+            <button id="tab-btn-1" onclick="switchDialogue(1)" class="tab-btn flex items-center p-2 rounded-2xl border transition-all text-left bg-sky-500 text-white border-sky-600 shadow-md">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1-IVQ_iuC8B3lqguURqLmKITsF1moPwxYKabJF3ezf7oZSkM4MO7zgI&s=10" alt="Beach Safety" class="w-12 h-12 rounded-xl object-cover shrink-0 mr-3">
+                <div class="overflow-hidden">
+                    <h3 class="font-bold text-xs sm:text-sm leading-tight truncate">Beach Safety</h3>
+                    <p class="text-[10px] opacity-90 truncate">Safety Briefing at the Beach.</p>
+                </div>
+            </button>
+
+            <!-- Tab 2 Button -->
+            <button id="tab-btn-2" onclick="switchDialogue(2)" class="tab-btn flex items-center p-2 rounded-2xl border transition-all text-left bg-white text-slate-700 border-slate-300 hover:bg-slate-50 shadow-sm">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVFTW12buyiCtqiHACy5Dy8gGEXquN6pOa7OkhA0sbdoYp4CK5ufM891jC&s=10" alt="Waterfall Safety" class="w-12 h-12 rounded-xl object-cover shrink-0 mr-3">
+                <div class="overflow-hidden">
+                    <h3 class="font-bold text-xs sm:text-sm leading-tight truncate">Waterfall Safety</h3>
+                    <p class="text-[10px] text-slate-500 truncate">Safety Procedures at a Waterfall.</p>
+                </div>
+            </button>
+
+            <!-- Tab 3 Button -->
+            <button id="tab-btn-3" onclick="switchDialogue(3)" class="tab-btn flex items-center p-2 rounded-2xl border transition-all text-left bg-white text-slate-700 border-slate-300 hover:bg-slate-50 shadow-sm">
+                <img src="https://live.staticflickr.com/65535/52675446886_d7e787fbf5_c.jpg" alt="Temple Safety" class="w-12 h-12 rounded-xl object-cover shrink-0 mr-3">
+                <div class="overflow-hidden">
+                    <h3 class="font-bold text-xs sm:text-sm leading-tight truncate">Temple Safety</h3>
+                    <p class="text-[10px] text-slate-500 truncate">Safety and Visitor Regulations at a Temple.</p>
+                </div>
+            </button>
+
+        </div>
+
+        <!-- DIALOGUE CONTENT CARD CONTAINER -->
+        <div class="bg-white p-5 sm:p-8 rounded-3xl border border-slate-200 shadow-xl min-h-[500px] flex flex-col justify-between">
+            
+            <!-- DIALOGUE 1 CONTENT (Gitgit Waterfall) -->
+            <div id="dialogue-1" class="dialogue-content space-y-3.5 sm:space-y-4">
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Good morning, everyone. Before we start our beach activity, I'd like to give you a short safety briefing.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tourist</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Sure. What should we know?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">First, please stay within the designated swimming area and follow the safety signs.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tourist</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Are there any areas we should avoid?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Yes. Please do not swim beyond the marked area. The sea conditions can change quickly.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tourist</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">What should we do if we see a warning flag?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Please pay attention to the warning flags. If you see a red flag, do not enter the water.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tourist</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">What if we have an emergency?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">If you need help, stay calm and contact the lifeguard immediately. The first-aid kit is available at the beach information center.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tourist</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Okay. So we should stay in the designated area and follow the safety signs.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Exactly. Please stay together, follow the instructions, and let me know if you need any assistance.</div></div>
+            </div>
+
+            <!-- DIALOGUE 2 CONTENT (Pasar Anyar) -->
+            <div id="dialogue-2" class="dialogue-content hidden space-y-3.5 sm:space-y-4">
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Before we start the walk, please listen to these safety instructions.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tourist</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Okay. Is the trail difficult?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Some parts of the trail can be slippery, especially after rain.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tourist</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">What should we do?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Please walk carefully and stay on the marked trail. Do not walk outside the designated pathway.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tourist</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Can we take pictures near the waterfall?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Yes, but please be careful. Do not stand too close to the edge or climb on wet rocks.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tourist</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">What should we do if someone falls?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Do not panic. Stay with the group and immediately inform me or the local staff.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tourist</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Got it. We should stay on the marked trail and be careful around the rocks.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">That's right. Safety comes first. Please follow the instructions throughout the trip.</div></div>
+            </div>
+
+            <!-- DIALOGUE 3 CONTENT (Dolphin Watching) -->
+            <div id="dialogue-3" class="dialogue-content hidden space-y-3.5 sm:space-y-4">
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Before we enter the temple, I'd like to explain some important rules and safety procedures.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Are there any special rules we need to follow?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Yes. Please wear a sarong and sash when entering the temple area.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Can we take photographs inside?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Photography is allowed in some areas, but please follow the signs and do not take photographs in restricted areas.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">What else should we be careful about?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Please respect the ceremony if one is taking place. Keep your voice low and do not disturb people who are praying.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Can we enter every area of the temple?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">No. Please do not enter restricted areas. Always follow the signs and instructions from the temple staff.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Understood.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Thank you for respecting the local rules and culture. If you are unsure about something, please ask me before doing it.</div></div>
+            </div>
+
+            <!-- NEXT / FINISH BUTTON (ONLY VISIBLE ON LAST TAB) -->
+            <div id="next-btn-container" class="hidden justify-end pt-6">
+                <a href="practice 2.html" onclick="finishModule()" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs sm:text-sm font-semibold px-8 py-2.5 rounded-full transition-all shadow-md">
+                    Next
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Navigation Logic -->
+    <script>
+        // Navbar Mobile Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function switchDialogue(tabIndex) {
+            // Hide all dialogues
+            document.querySelectorAll('.dialogue-content').forEach(el => el.classList.add('hidden'));
+            
+            // Show selected dialogue
+            document.getElementById(`dialogue-${tabIndex}`).classList.remove('hidden');
+
+            // Reset all tab button styles
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById(`tab-btn-${i}`);
+                btn.className = "tab-btn flex items-center p-2 rounded-2xl border transition-all text-left bg-white text-slate-700 border-slate-300 hover:bg-slate-50 shadow-sm";
+                btn.querySelector('p').className = "text-[10px] text-slate-500 truncate";
+            }
+
+            // Highlight active tab button
+            const activeBtn = document.getElementById(`tab-btn-${tabIndex}`);
+            activeBtn.className = "tab-btn flex items-center p-2 rounded-2xl border transition-all text-left bg-sky-500 text-white border-sky-600 shadow-md";
+            activeBtn.querySelector('p').className = "text-[10px] opacity-90 truncate";
+
+            // Show 'Next' button ONLY on the 3rd (last) tab
+            const nextBtnContainer = document.getElementById('next-btn-container');
+            if (tabIndex === 3) {
+                nextBtnContainer.classList.remove('hidden');
+                nextBtnContainer.classList.add('flex');
+            } else {
+                nextBtnContainer.classList.add('hidden');
+                nextBtnContainer.classList.remove('flex');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.1 Vocabulary Bank - Tour Guiding E-Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* 3D Flip Card Styles */
+        .perspective-card {
+            perspective: 1000px;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease-in-out;
+            transform-style: preserve-3d;
+        }
+        .card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 0.75rem;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="landing page.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
+            <a href="unit 1.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 2: Safety Procedures</a>
+        </nav>
+    </header>
+
+    <!-- Main Container Card -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
+        <div class="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-xl space-y-6">
+            
+            <!-- Section Title -->
+            <h2 class="text-xl sm:text-xl font-bold text-slate-900">A.1 Vocabulary Bank</h2>
+
+            <!-- Grid Container: 2 cols on mobile, 3 on tablet, 6 on desktop -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+
+                <!-- 1. Go straight -->
+                <div class="h-44 perspective-card">
+                    <div id="card-1" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://thumbs.dreamstime.com/b/go-straight-road-sign-vector-illustration-decorative-design-186168917.jpg');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-1')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Go straight. Go straight for about 200 meters.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Go straight</h4>
+                                <p class="text-[8px] text-white-100 mt-1 drop-shadow leading-snug">Go straight for about 200 meters.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Verb Phrase</span>
+                                <button type="button" onclick="flipCard(event, 'card-1')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Jalan lurus</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">berjalan atau berkendara lurus ke depan tanpa berbelok ke kiri maupun ke kanan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Turn Left -->
+                <div class="h-44 perspective-card">
+                    <div id="card-2" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRczigpvtrveKiY9gaZuYekrbe_o_auPSK2CAwOwX1lEdEfn5lRUcYzrYR9&s=10');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-2')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Turn left. Turn left after the big blue sign.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-center my-auto">
+                               </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight">Turn Left</h4>
+                                <p class="text-[8px] text-white-200 mt-1 leading-snug">Turn left after the big blue sign.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Verb Phrase</span>
+                                <button type="button" onclick="flipCard(event, 'card-2')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                 <p class="text-[10px] font-extrabold text-teal-300">Belok kiri</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">digunakan untuk meminta seseorang mengubah arah gerakannya ke sisi sebelah kiri.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Turn Right -->
+                <div class="h-44 perspective-card">
+                    <div id="card-3" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL0Bw64VwvbFV0GMfJG_Z8juyIPmDNUaTZRcNtz1Tkxr6bc04_MOPVy1s&s=10');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-3')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Turn right. Turn right at the next traffic signal.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-center my-auto">
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight">Turn Right</h4>
+                                <p class="text-[8px] text-purple-200 mt-1 leading-snug">Turn right at the next traffic signal.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Verb Phrase</span>
+                                <button type="button" onclick="flipCard(event, 'card-3')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Belok kanan</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">digunakan untuk meminta seseorang mengubah arah gerakannya ke sisi sebelah kanan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Intersection -->
+                <div class="h-44 perspective-card">
+                    <div id="card-4" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1iHi1ihsQVqanZRAb_C6fE8wB31zmqt070szRDrFGMuFoM4xjOkscERyg&s=10');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-4')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Intersection. Proceed carefully through the busy intersection.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Intersection</h4>
+                                <p class="text-[8px] text-slate-100 mt-1 leading-snug">Proceed carefully through the busy intersection.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-4')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Persimpangan</p>
+                                <p class="text-[7.5px] text-slate-300 mt-1">persimpangan di mana dua jalan atau lebih saling memotong / bersilangan (biasanya membentuk perempatan atau silang empat).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Junction -->
+                <div class="h-44 perspective-card">
+                    <div id="card-5" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1678466272132-ded8f248f172?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-5')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Junction. Turn left at the next junction.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Junction</h4>
+                                <p class="text-[8px] text-slate-100 mt-1 leading-snug">Turn left at the next junction.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-5')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Pertigaan / Simpang</p>
+                                <p class="text-[7.5px] text-slate-300 mt-1">merujuk pada pertigaan (T-junction), percabangan jalan (Y-junction), atau titik masuk dari jalan kecil ke jalan utama, di mana satu jalan berakhir di jalan lainnya.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Roundabout -->
+                <div class="h-44 perspective-card">
+                    <div id="card-6" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1586104730754-ffc0ed261e0d?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-6')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Roundabout. Take the second exit at the roundabout.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Roundabout</h4>
+                                <p class="text-[8px] text-slate-100 mt-1 leading-snug">Take the second exit at the roundabout.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-6')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Bundaran</p>
+                                <p class="text-[7.5px] text-slate-300 mt-1">suatu persimpangan tempat lalu lintas searah mengelilingi suatu pulau jalan yang bundar dipertengahan persimpangan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Crosswalk -->
+                <div class="h-44 perspective-card">
+                    <div id="card-7" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1775743241784-c0b3041470f7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-7')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Crosswalk. Stop and check both sides before crossing.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Crosswalk</h4>
+                                <p class="text-[8px] text-slate-100 mt-1 leading-snug">Stop and check both sides before crossing.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-7')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Penyebrangan jalan</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">marka jalan berupa garis-garis membujur berwarna putih dan hitam yang berfungsi sebagai jalur penyeberangan aman bagi pejalan kaki.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Landmark -->
+                <div class="h-44 perspective-card">
+                            <div id="card-8" class="card-inner">
+                                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/92/66/7b/the-garuda-wisnu-kencana.jpg?w=500&h=500&s=1');">
+                                    <div class="relative z-20 flex justify-between items-start">
+                                        <button type="button" onclick="flipCard(event, 'card-8')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                        <button type="button" onclick="speakText('Landmark. Garuda Wisnu Kencana is one of the most iconic landmarks in Bali.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                            <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                    <div class="relative z-10">
+                                        <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Landmark</h4>
+                                        <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">Garuda Wisnu Kencana is one of the most iconic landmarks in Bali.</p>
+                                    </div>
+                                </div>
+                                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                                    <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                        <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                        <button type="button" onclick="flipCard(event, 'card-8')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                                    </div>
+                                    <div class="my-auto">
+                                        <p class="text-[10px] font-extrabold text-teal-300">Markah tanah</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">objek, bangunan, atau ciri khas geografis yang berukuran jelas, mudah dikenali, dan menjadi simbol atau identitas suatu wilayah.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- 9. Corner -->
+                 <div class="h-44 perspective-card">
+                            <div id="card-9" class="card-inner">
+                                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://media-cdn.tripadvisor.com/media/photo-s/1a/06/e6/ec/cafe-kitsune-new-york.jpg');">
+                                    <div class="relative z-20 flex justify-between items-start">
+                                        <button type="button" onclick="flipCard(event, 'card-9')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                        <button type="button" onclick="speakText('Corner. It is on the corner of the street.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                            <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                    <div class="relative z-10">
+                                        <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Corner</h4>
+                                        <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">It is on the corner of the street.</p>
+                                    </div>
+                                </div>
+                                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                                    <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                        <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                        <button type="button" onclick="flipCard(event, 'card-9')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                                    </div>
+                                    <div class="my-auto">
+                                        <p class="text-[10px] font-extrabold text-teal-300">Pojok / Tikungan jalan</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">sudut tempat bertemunya dua jalan atau dua dinding.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- 11. Across from -->
+                <div class="h-44 perspective-card">
+              <div id="card-11" class="card-inner">
+                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1775210460101-228a629e39bf?q=80&w=868&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                  <div class="relative z-20 flex justify-between items-start">
+                    <button type="button" onclick="flipCard(event, 'card-11')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                    <button type="button" onclick="speakText('Across from. You can find the park across from the public library.')" class="hover:scale-125 transition cursor-pointer text-white">
+                      <i data-lucide="volume-2" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                  <div class="relative z-10">
+                    <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Across from</h4>
+                    <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">You can find the park across from the public library.</p>
+                  </div>
+                </div>
+                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                  <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                    <span class="text-[8px] font-bold text-amber-300 uppercase">Preposition</span>
+                    <button type="button" onclick="flipCard(event, 'card-11')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                  </div>
+                  <div class="my-auto">
+                    <p class="text-[10px] font-extrabold text-teal-300">Di Seberang</p>
+                    <p class="text-[7.5px] text-slate-200 mt-1">digunakan ketika suatu tempat berada tepat di sisi lain dari jalan, ruangan, atau objek yang menghadapinya.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+                <!-- 12. Next to -->
+                <div class="h-44 perspective-card">
+              <div id="card-12" class="card-inner">
+                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://i.pinimg.com/1200x/69/ae/fa/69aefab023c880c7ef1cc1444f69391a.jpg');">
+                  <div class="relative z-20 flex justify-between items-start">
+                    <button type="button" onclick="flipCard(event, 'card-12')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                    <button type="button" onclick="speakText('Next to. The post office is next to the grocery store.')" class="hover:scale-125 transition cursor-pointer text-white">
+                      <i data-lucide="volume-2" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                  <div class="relative z-10">
+                    <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Next to</h4>
+                    <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">The post office is next to the grocery store.</p>
+                  </div>
+                </div>
+                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                  <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                    <span class="text-[8px] font-bold text-amber-300 uppercase">Preposition</span>
+                    <button type="button" onclick="flipCard(event, 'card-12')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                  </div>
+                  <div class="my-auto">
+                    <p class="text-[10px] font-extrabold text-teal-300">Di Sebelah</p>
+                    <p class="text-[7.5px] text-slate-200 mt-1">tepat di sebelah atau berdampingan tanpa ada jarak atau ruang kosong di antaranya</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+                
+                <!-- 14. Around the corner -->
+                <div class="h-44 perspective-card">
+              <div id="card-14" class="card-inner">
+                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=400&q=80');">
+                  <div class="relative z-20 flex justify-between items-start">
+                    <button type="button" onclick="flipCard(event, 'card-14')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                    <button type="button" onclick="speakText('Around the corner. The coffee shop is right around the corner.')" class="hover:scale-125 transition cursor-pointer text-white">
+                      <i data-lucide="volume-2" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                  <div class="relative z-10">
+                    <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Around the corner</h4>
+                    <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">The coffee shop is right around the corner.</p>
+                  </div>
+                </div>
+                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                  <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                    <span class="text-[8px] font-bold text-amber-300 uppercase">Idiom / Phrase</span>
+                    <button type="button" onclick="flipCard(event, 'card-14')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                  </div>
+                  <div class="my-auto">
+                    <p class="text-[10px] font-extrabold text-teal-300">Di dekat sini / di balik tikungan</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">berada di tempat yang sangat dekat (jarak) atau akan segera terjadi dalam waktu dekat (waktu).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+                <!-- 15. Pathway -->
+                <div class="h-44 perspective-card">
+                    <div id="card-15" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4SxUOPsoKWphlmurZmtHFcavV_v3Nko1ayey7vc2ym1i-miolCBjsIXOH&s=10');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-15')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Pathway. Follow the paved pathway towards the lake.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Pathway</h4>
+                                <p class="text-[8px] text-slate-100 mt-1 leading-snug">Follow the paved pathway towards the lake.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-15')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Jalan setapak</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">jalur kecil yang biasanya diperuntukkan bagi pejalan kaki, bukan untuk kendaraan besar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 16. Trail -->
+                <div class="h-44 perspective-card">
+                    <div id="card-16" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://i.pinimg.com/736x/be/6d/4d/be6d4d0a22a7eb91f86fbf9fc5c4aced.jpg');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-16')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Trail. Hikers should stick to the marked mountain trail.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Trail</h4>
+                                <p class="text-[8px] text-slate-100 mt-1 leading-snug">Hikers should stick to the marked mountain trail.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-16')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Jalur jelajah / Alam</p>
+                                <p class="text-[7.5px] text-slate-300 mt-1">jalur atau jejak yang berada di alam liar yang terbentuk secara alami atau minim intervensi manusia.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 17. Signpost -->
+                <div class="h-44 perspective-card">
+                    <div id="card-17" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://farm4.staticflickr.com/3875/15020939419_2cea5bac72_o.jpg');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-17')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Signpost. Read the signpost to check the remaining distance.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight">Signpost</h4>
+                                <p class="text-[8px] text-blue-200 mt-1 leading-snug">Read the signpost to check the remaining distance.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-17')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Papan petunjuk jalan</p>
+                                <p class="text-[7.5px] text-slate-300 mt-1">tiang penunjuk arah di tepi jalan yang memuat informasi rute atau jarak.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Next Button at Bottom Right -->
+            <div class="flex justify-end pt-4">
+                <a href="ekspresi 1.html" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs sm:text-sm font-semibold px-8 py-2.5 rounded-full transition-all shadow-md">
+                    Next
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Controls -->
+    <script>
+        // Lucide Icons Initialization
+        lucide.createIcons();
+
+        // Navbar Mobile Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Flip Card Handler
+        function flipCard(event, cardId) {
+            event.stopPropagation();
+            const card = document.getElementById(cardId);
+            if (card) {
+                card.classList.toggle('flipped');
+            }
+        }
+
+        // Text-to-Speech Handler
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Browser Anda tidak mendukung Text-To-Speech.');
+            }
+        }
+    </script>
+</body>
+</html>

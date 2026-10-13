@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.3 Panduan Pelafalan - Tour Guiding E-Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="landing page.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
+            <a href="unit 1.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 2: Safety Procedures</a>
+        </nav>
+    </header>
+
+    <!-- Main Container Card -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
+        <div class="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-xl space-y-6">
+            
+            <!-- Section Title -->
+            <h2 class="text-xl sm:text-xl font-bold text-slate-900">A.3 Panduan Pelafalan</h2>
+
+            <!-- Cards Grid: 1 col on mobile, 2 on tablet, 4 on desktop -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    
+                    <!-- Card 1: Precaution -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Precaution</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/prɪˈkɔːʃən/</p>
+                        <p class="text-sm font-semibold text-slate-600 mt-2 tracking-wide">pri-<span class="text-amber-500 font-bold">KAW</span>-shun</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-center space-x-2 pt-1">
+                            <button onclick="playAudio('Precaution')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>▶ Play</span>
+                            </button>
+                            <button id="rec-btn-precaution" onclick="toggleRecord('Precaution', 'rec-btn-precaution', 'assess-precaution')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>🎙 Record</span>
+                            </button>
+                        </div>
+                        <div id="assess-precaution" class="min-h-[52px] border border-slate-300 rounded p-2 text-[11px] text-slate-500 flex flex-col justify-center items-center bg-slate-50">
+                            <span>Assessment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Emergency -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Emergency</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ɪˈmɜː.dʒən.si/</p>
+                        <p class="text-sm font-semibold text-slate-600 mt-2 tracking-wide">ih-<span class="text-amber-500 font-bold">MUR</span>-jen-see</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-center space-x-2 pt-1">
+                            <button onclick="playAudio('Emergency')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>▶ Play</span>
+                            </button>
+                            <button id="rec-btn-emergency" onclick="toggleRecord('Emergency', 'rec-btn-emergency', 'assess-emergency')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>🎙 Record</span>
+                            </button>
+                        </div>
+                        <div id="assess-emergency" class="min-h-[52px] border border-slate-300 rounded p-2 text-[11px] text-slate-500 flex flex-col justify-center items-center bg-slate-50">
+                            <span>Assessment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Evacuation -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Evacuation</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ɪˌvæk.juˈeɪ.ʃən/</p>
+                        <p class="text-sm font-semibold text-slate-600 mt-2 tracking-wide">ih-vak-yu-<span class="text-amber-500 font-bold">EY</span>-shun</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-center space-x-2 pt-1">
+                            <button onclick="playAudio('Evacuation')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>▶ Play</span>
+                            </button>
+                            <button id="rec-btn-evacuation" onclick="toggleRecord('Evacuation', 'rec-btn-evacuation', 'assess-evacuation')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>🎙 Record</span>
+                            </button>
+                        </div>
+                        <div id="assess-evacuation" class="min-h-[52px] border border-slate-300 rounded p-2 text-[11px] text-slate-500 flex flex-col justify-center items-center bg-slate-50">
+                            <span>Assessment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Procedure -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Procedure</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/prəˈsiː.dʒə/</p>
+                        <p class="text-sm font-semibold text-slate-600 mt-2 tracking-wide">pruh-<span class="text-amber-500 font-bold">SEE</span>-jer</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-center space-x-2 pt-1">
+                            <button onclick="playAudio('Procedure')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>▶ Play</span>
+                            </button>
+                            <button id="rec-btn-procedure" onclick="toggleRecord('Procedure', 'rec-btn-procedure', 'assess-procedure')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>🎙 Record</span>
+                            </button>
+                        </div>
+                        <div id="assess-procedure" class="min-h-[52px] border border-slate-300 rounded p-2 text-[11px] text-slate-500 flex flex-col justify-center items-center bg-slate-50">
+                            <span>Assessment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Mandatory -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Mandatory</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ˈmæn.də.tər.i/</p>
+                        <p class="text-sm font-semibold text-slate-600 mt-2 tracking-wide"><span class="text-amber-500 font-bold">MAN</span>-duh-tor-ee</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-center space-x-2 pt-1">
+                            <button onclick="playAudio('Mandatory')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>▶ Play</span>
+                            </button>
+                            <button id="rec-btn-mandatory" onclick="toggleRecord('Mandatory', 'rec-btn-mandatory', 'assess-mandatory')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>🎙 Record</span>
+                            </button>
+                        </div>
+                        <div id="assess-mandatory" class="min-h-[52px] border border-slate-300 rounded p-2 text-[11px] text-slate-500 flex flex-col justify-center items-center bg-slate-50">
+                            <span>Assessment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Hazard -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Hazard</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ˈhæz.əd/</p>
+                        <p class="text-sm font-semibold text-slate-600 mt-2 tracking-wide"><span class="text-amber-500 font-bold">HAZ</span>-erd</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-center space-x-2 pt-1">
+                            <button onclick="playAudio('Hazard')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>▶ Play</span>
+                            </button>
+                            <button id="rec-btn-hazard" onclick="toggleRecord('Hazard', 'rec-btn-hazard', 'assess-hazard')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>🎙 Record</span>
+                            </button>
+                        </div>
+                        <div id="assess-hazard" class="min-h-[52px] border border-slate-300 rounded p-2 text-[11px] text-slate-500 flex flex-col justify-center items-center bg-slate-50">
+                            <span>Assessment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: Slippery -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Slippery</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ˈslɪp.ər.i/</p>
+                        <p class="text-sm font-semibold text-slate-600 mt-2 tracking-wide"><span class="text-amber-500 font-bold">SLIP</span>-uh-ree</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-center space-x-2 pt-1">
+                            <button onclick="playAudio('Slippery')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>▶ Play</span>
+                            </button>
+                            <button id="rec-btn-slippery" onclick="toggleRecord('Slippery', 'rec-btn-slippery', 'assess-slippery')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>🎙 Record</span>
+                            </button>
+                        </div>
+                        <div id="assess-slippery" class="min-h-[52px] border border-slate-300 rounded p-2 text-[11px] text-slate-500 flex flex-col justify-center items-center bg-slate-50">
+                            <span>Assessment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8: Whistle -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Whistle</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ˈwɪs.əl/</p>
+                        <p class="text-sm font-semibold text-slate-600 mt-2 tracking-wide"><span class="text-amber-500 font-bold">WISS</span>-uhl</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-center space-x-2 pt-1">
+                            <button onclick="playAudio('Whistle')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>▶ Play</span>
+                            </button>
+                            <button id="rec-btn-whistle" onclick="toggleRecord('Whistle', 'rec-btn-whistle', 'assess-whistle')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                                <span>🎙 Record</span>
+                            </button>
+                        </div>
+                        <div id="assess-whistle" class="min-h-[52px] border border-slate-300 rounded p-2 text-[11px] text-slate-500 flex flex-col justify-center items-center bg-slate-50">
+                            <span>Assessment</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Next Button at Bottom Right -->
+            <div class="flex justify-end pt-4">
+                <a href="dialog 2.html" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs sm:text-sm font-semibold px-8 py-2.5 rounded-full transition-all shadow-md">
+                    Next
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Audio & Speech Recognition Logic -->
+    <script>
+        // Toggle Mobile Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Text-to-Speech Playback
+        function playAudio(word) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.85;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Audio playback is not supported in this browser.');
+            }
+        }
+
+        // Speech Recognition / Assessment Handling
+        let activeRecognition = null;
+        let currentRecBtnId = null;
+
+        function toggleRecord(targetWord, btnId, assessBoxId) {
+            const btn = document.getElementById(btnId);
+            const assessBox = document.getElementById(assessBoxId);
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (!SpeechRecognition) {
+                assessBox.innerHTML = '<span class="text-amber-600 font-semibold">Speech API Not Supported</span>';
+                return;
+            }
+
+            if (activeRecognition) {
+                activeRecognition.stop();
+                activeRecognition = null;
+                if (currentRecBtnId) {
+                    document.getElementById(currentRecBtnId).innerHTML = '<span>🎙 Record</span>';
+                    document.getElementById(currentRecBtnId).classList.remove('bg-red-600', 'hover:bg-red-700');
+                    document.getElementById(currentRecBtnId).classList.add('bg-[#0f2d4a]', 'hover:bg-[#0a1e32]');
+                }
+                if (currentRecBtnId === btnId) return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            btn.innerHTML = '<span>⏹ Stop</span>';
+            btn.classList.remove('bg-[#0f2d4a]', 'hover:bg-[#0a1e32]');
+            btn.classList.add('bg-red-600', 'hover:bg-red-700');
+
+            assessBox.innerHTML = '<span class="text-sky-600 font-bold animate-pulse">Listening...</span>';
+
+            currentRecBtnId = btnId;
+            activeRecognition = recognition;
+
+            recognition.start();
+
+            recognition.onresult = (event) => {
+                const spokenText = event.results[0][0].transcript.toLowerCase().trim();
+                const target = targetWord.toLowerCase().trim();
+
+                if (spokenText.includes(target) || target.includes(spokenText)) {
+                    assessBox.innerHTML = `
+                        <span class="text-emerald-700 font-bold">✓ Accurate (100/100)</span>
+                        <span class="text-[10px] text-slate-500 italic">"${spokenText}"</span>
+                    `;
+                } else {
+                    assessBox.innerHTML = `
+                        <span class="text-amber-700 font-semibold">Try Again</span>
+                        <span class="text-[10px] text-slate-500 italic">Heard: "${spokenText}"</span>
+                    `;
+                }
+            };
+
+            recognition.onerror = () => {
+                assessBox.innerHTML = '<span class="text-red-600 font-medium">Error / No speech detected</span>';
+            };
+
+            recognition.onend = () => {
+                btn.innerHTML = '<span>🎙 Record</span>';
+                btn.classList.remove('bg-red-600', 'hover:bg-red-700');
+                btn.classList.add('bg-[#0f2d4a]', 'hover:bg-[#0a1e32]');
+                activeRecognition = null;
+            };
+        }
+
+        function nextPage() {
+            window.location.href = "chatbot-sims-2.html";
+        }
+    </script>
+</body>
+</html>

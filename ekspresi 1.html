@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.2 Ekspresi Memberi Arah - Tour Guiding E-Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Menyembunyikan Scrollbar Horizontal (Chrome, Safari, Firefox, Edge) */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 h-screen overflow-hidden flex flex-col">
+
+    <!-- Header / Navbar (Fixed di Atas) -->
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md w-full flex-shrink-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="index.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
+            <a href="unit 1.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 2: Safety Procedures</a>
+        </nav>
+    </header>
+
+    <!-- Main Container Card (Tinggi Pas Layar, Mencegah Scroll Vertikal) -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex-grow w-full flex flex-col justify-between overflow-hidden">
+        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl flex flex-col justify-between h-full overflow-hidden">
+            
+            <!-- Section Title & Petunjuk Drag/Scroll -->
+            <div class="flex justify-between items-center flex-shrink-0 mb-4">
+                <h2 class="text-xl sm:text-xl font-bold text-slate-900">A.2 Ekspresi Memberi Arah</h2>
+            </div>
+
+            <!-- Horizontal Scroll Container (Scroll Tanpa Scrollbar) -->
+            <div id="scroll-container" class="overflow-x-auto no-scrollbar py-2 my-auto flex-grow flex items-center cursor-grab active:cursor-grabbing select-none">
+                <div class="flex flex-nowrap gap-5 min-w-max px-2">
+
+                    <!-- Note A: Opening / Confirming Request -->
+                    <div class="w-72 sm:w-80 bg-[#E2F0D9] border-2 border-slate-800 p-5 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] flex-shrink-0 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-sm sm:text-base text-slate-900 mb-2">A. Opening / Confirming Request</h3>
+                            <p class="text-xs text-slate-700 leading-relaxed mb-4 text-justify">
+                                Untuk membuka atau memastikan permintaan touris, seorang tour guide bisa menggunakan ekspresi bahasa berikut:
+                            </p>
+                            <ul class="space-y-2 text-xs text-slate-900 font-medium list-disc list-inside">
+                                <li>"How can I help you?"</li>
+                                <li>"Where would you like to go?"</li>
+                                <li>"Are you looking for...?"</li>
+                                <li>"Let me show you the way."</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Note B: Giving the Direction -->
+                    <div class="w-72 sm:w-80 bg-[#D9E1F2] border-2 border-slate-800 p-5 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] flex-shrink-0 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-sm sm:text-base text-slate-900 mb-2">B. Giving the Direction</h3>
+                            <p class="text-xs text-slate-700 leading-relaxed mb-4 text-justify">
+                                Untuk memberikan instruksi arah pada touris, seorang tour guide bisa menggunakan ekspresi bahasa berikut:
+                            </p>
+                            <ul class="space-y-2 text-xs text-slate-900 font-medium list-disc list-inside">
+                                <li>"Go straight until you reach..."</li>
+                                <li>"Turn left/right at..."</li>
+                                <li>"Walk past the... and you'll see..."</li>
+                                <li>"It's on your left/right-hand side."</li>
+                                <li>"Follow this path and you can't miss it."</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Note C: Distance & Time -->
+                    <div class="w-72 sm:w-80 bg-[#FCE4D6] border-2 border-slate-800 p-5 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] flex-shrink-0 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-sm sm:text-base text-slate-900 mb-2">C. Distance & Time</h3>
+                            <p class="text-xs text-slate-700 leading-relaxed mb-4 text-justify">
+                                Selain memberikan instruksi arah, tour guide juga bisa menyertakan jarak dan waktu tempuh dengan contoh sebagai berikut:
+                            </p>
+                            <ul class="space-y-2 text-xs text-slate-900 font-medium list-disc list-inside">
+                                <li>"It's about 5 minutes on foot / a short drive."</li>
+                                <li>"It's roughly 200 meters from here."</li>
+                                <li>"It's not far, just around the corner."</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Note D: Checking Understanding -->
+                    <div class="w-72 sm:w-80 bg-[#E8D8F8] border-2 border-slate-800 p-5 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] flex-shrink-0 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-sm sm:text-base text-slate-900 mb-2">D. Checking Understanding</h3>
+                            <p class="text-xs text-slate-700 leading-relaxed mb-4 text-justify">
+                                Tour guide juga bertugas untuk memastikan bahwa touris mengerti dengan arahan yang diberikan, berikut adalah ekspresi bahasa yang bisa digunakan:
+                            </p>
+                            <ul class="space-y-2 text-xs text-slate-900 font-medium list-disc list-inside">
+                                <li>"Does that make sense?"</li>
+                                <li>"Is that clear?"</li>
+                                <li>"Would you like me to repeat that?"</li>
+                                <li>"Let me know if you need me to show you on the map."</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Note E: Closing -->
+                    <div class="w-72 sm:w-80 bg-[#F8CECC] border-2 border-slate-800 p-5 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] flex-shrink-0 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-sm sm:text-base text-slate-900 mb-2">E. Closing</h3>
+                            <p class="text-xs text-slate-700 leading-relaxed mb-4 text-justify">
+                                Setelah memastikan bahwa turis paham dengan arahan yang diberikan, pemandu wisata bisa menutup dengan percakapan dengan ekspresi bahasa berikut:
+                            </p>
+                            <ul class="space-y-2 text-xs text-slate-900 font-medium list-disc list-inside">
+                                <li>"Enjoy your visit!"</li>
+                                <li>"Have a safe trip!"</li>
+                                <li>"Let me know if you get lost, just ask anyone here."</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Next Button at Bottom Right -->
+            <div class="flex justify-end pt-2 flex-shrink-0">
+                <a href="pronun 1.html" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs sm:text-sm font-semibold px-8 py-2.5 rounded-full transition-all shadow-md">
+                    Next
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Handling -->
+    <script>
+        // Navbar Mobile Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Mouse Wheel & Drag Horizontal Scroll Logic
+        const scrollContainer = document.getElementById('scroll-container');
+
+        // 1. Mengubah scroll roda mouse vertikal menjadi scroll horizontal
+        scrollContainer.addEventListener('wheel', (evt) => {
+            evt.preventDefault();
+            scrollContainer.scrollLeft += evt.deltaY * 1.5;
+        }, { passive: false });
+
+        // 2. Klik & Seret dengan Mouse (Mouse Drag to Scroll)
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+        });
+
+        scrollContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        scrollContainer.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 2; // Kecepatan drag
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>

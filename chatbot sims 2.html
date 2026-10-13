@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Simulation Unit 2 - Tour Guiding E-Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action - Unit 2</p>
+            </div>
+
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h18"></path>
+                </svg>
+            </button>
+        </div>
+
+       <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="index.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
+            <a href="unit 1.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 2: Safety Procedures</a>
+        </nav>
+    </header>
+
+    <!-- Main Outer Container -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-6 flex-grow w-full flex flex-col justify-between">
+        
+        <!-- Simulation Card Container -->
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-xl flex flex-col h-[680px] overflow-hidden">
+            
+            <!-- Chat Header / Tourist Persona Info -->
+            <div class="bg-[#0f2d4a] text-white p-4 sm:p-5 flex flex-wrap gap-3 justify-between items-center border-b border-slate-700">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <img id="persona-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Tourist Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-amber-400" />
+                        <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h2 id="persona-name" class="text-sm sm:text-base font-bold text-white">Arthur Pendelton</h2>
+                            <span id="persona-tag" class="text-[10px] bg-amber-400 text-slate-900 font-extrabold px-2 py-0.5 rounded-full uppercase">Elderly / Senior</span>
+                        </div>
+                        <p id="persona-scenario" class="text-[11px] text-slate-300">Scenario: Nervous first-timer asking about snorkeling safety procedures.</p>
+                    </div>
+                </div>
+
+                <!-- Persona Switcher Dropdown & Finish Button -->
+                <div class="flex items-center space-x-2">
+                    <select id="persona-select" onchange="switchPersona(this.value)" class="bg-slate-800 text-white text-xs border border-slate-600 rounded-xl px-3 py-2 font-medium focus:outline-none focus:border-amber-400">
+                        <option value="senior">👴 Elderly / Senior Tourist</option>
+                        <option value="child">👦 Child Tourist (Leo)</option>
+                        <option value="teen">🎧 Teenager Tourist (Maya)</option>
+                        <option value="family">👨‍👩‍👧 Small Family (The Millers)</option>
+                    </select>
+
+                    <button onclick="openAssessmentModal()" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold text-xs px-4 py-2 rounded-full transition-all shadow-sm">
+                        Finish Simulation
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Messages Container -->
+            <div id="chat-messages" class="flex-grow p-4 sm:p-6 overflow-y-auto space-y-4 bg-slate-50">
+                <!-- Dynamic Initial Message generated by JS -->
+            </div>
+
+            <!-- Chat Input Form -->
+            <form id="chat-form" onsubmit="handleSendMessage(event)" class="p-3 sm:p-4 bg-white border-t border-slate-200 flex items-center gap-2">
+                <input type="text" id="user-input" placeholder="Type your response as a tour guide explaining safety..." class="flex-grow px-4 py-3 rounded-full border border-slate-300 text-xs sm:text-sm focus:outline-none focus:border-teal-600 bg-slate-50 text-slate-800" />
+                <button type="submit" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white font-semibold text-xs sm:text-sm px-6 py-3 rounded-full transition-all shadow-md shrink-0">
+                    Send
+                </button>
+            </form>
+
+        </div>
+    </main>
+
+    <!-- EVALUATION / ASSESSMENT MODAL -->
+    <div id="assessment-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white max-w-2xl w-full rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
+            
+            <div class="flex justify-between items-start border-b border-slate-100 pb-4">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Simulation Assessment & Feedback</h2>
+                    <p class="text-xs text-slate-500 mt-0.5">Performance evaluation on safety procedure explanation.</p>
+                </div>
+                <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Completed</span>
+            </div>
+
+            <!-- Score Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center space-y-1">
+                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Safety Explanation</p>
+                    <p id="score-accuracy" class="text-2xl font-extrabold text-teal-700">0/100</p>
+                    <p class="text-[10px] text-slate-400">Clear procedures & gear use</p>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center space-y-1">
+                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Tone & Empathy</p>
+                    <p id="score-expression" class="text-2xl font-extrabold text-amber-600">0/100</p>
+                    <p class="text-[10px] text-slate-400">Persona adaptation & reassurance</p>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center space-y-1">
+                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Interaction & Clarity</p>
+                    <p id="score-interaction" class="text-2xl font-extrabold text-sky-700">0/100</p>
+                    <p class="text-[10px] text-slate-400">Responsiveness & checking understanding</p>
+                </div>
+            </div>
+
+            <!-- Detailed Feedback Box -->
+            <div class="bg-emerald-50/70 border border-emerald-200 p-4 rounded-2xl space-y-2 text-xs text-slate-700 leading-relaxed">
+                <h3 class="font-bold text-emerald-900 flex items-center gap-1.5 text-sm">
+                    <span>✓</span> Detailed Feedback
+                </h3>
+                <p><strong>What went well:</strong> <span id="feedback-good">No conversation recorded.</span></p>
+                <p><strong>Areas to improve:</strong> <span id="feedback-improve">Please type and send directions before ending.</span></p>
+            </div>
+
+            <!-- Modal Action Buttons -->
+            <div class="flex justify-end space-x-3 pt-2">
+                <button onclick="closeAssessmentModal()" class="px-5 py-2.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+                    Review Chat
+                </button>
+                <button id="action-next-persona-btn" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-[#0f2d4a] text-white hover:bg-[#0a1e32] shadow-md transition-all">
+                    Try Next Tourist Persona
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Toggle Mobile Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Persona Bank Data
+        const personas = {
+            senior: {
+                key: 'senior',
+                name: 'Arthur Pendelton',
+                tag: 'Elderly / Senior',
+                avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80',
+                scenario: 'Nervous first-timer asking about snorkeling safety procedures.',
+                initialMsg: "Hi, I'm a bit nervous. I've never been snorkeling before. Is it safe?",
+                responses: [
+                    "Thank you for reassuring me. Do I really need to wear this life jacket the entire time?",
+                    "Understood. What should I do if I get tired or panic in the water?",
+                    "That gives me peace of mind. Thank you for taking care of us elderly guests!"
+                ]
+            },
+            child: {
+                key: 'child',
+                name: 'Leo (Age 8)',
+                tag: 'Child Tourist',
+                avatar: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=150&q=80',
+                scenario: 'Excited child asking about safety gear and ocean animals.',
+                initialMsg: "Hi Mr. Guide! Is the water super deep? Do I have to wear this big orange vest?",
+                responses: [
+                    "Cool! Will I see Nemo? What if a big wave comes?",
+                    "If I need help, can I blow this whistle really loud?",
+                    "Yay! I'm ready to swim now. Thank you!"
+                ]
+            },
+            teen: {
+                key: 'teen',
+                name: 'Maya',
+                tag: 'Teenager Tourist',
+                avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
+                scenario: 'Independent teenager asking about selfie limits and water currents.',
+                initialMsg: "Hey! Can I take my underwater camera past the red buoy line?",
+                responses: [
+                    "Aw man, why is it restricted beyond the barriers?",
+                    "Got it. What's the signal if the current gets too strong?",
+                    "Cool, thanks for the heads up! I'll stay with the group."
+                ]
+            },
+            family: {
+                key: 'family',
+                name: 'The Miller Family',
+                tag: 'Small Family',
+                avatar: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=150&q=80',
+                scenario: 'Parents checking emergency evacuation protocols for their young kids.',
+                initialMsg: "Hello! We're here with our two young kids. What safety procedures should we follow as a family?",
+                responses: [
+                    "Good to know. Where is our designated evacuation point in case of a sudden weather change?",
+                    "What if one of the children loses their harness or life jacket lock?",
+                    "Thank you so much! We feel much safer taking our family out now."
+                ]
+            }
+        };
+
+        let currentPersona = personas.senior;
+        let userMessageCount = 0;
+
+        function switchPersona(key) {
+            currentPersona = personas[key];
+            userMessageCount = 0;
+
+            // Update UI Header
+            document.getElementById('persona-name').innerText = currentPersona.name;
+            document.getElementById('persona-tag').innerText = currentPersona.tag;
+            document.getElementById('persona-avatar').src = currentPersona.avatar;
+            document.getElementById('persona-scenario').innerText = `Scenario: ${currentPersona.scenario}`;
+
+            // Reset Chat Messages
+            const chatContainer = document.getElementById('chat-messages');
+            chatContainer.innerHTML = `
+                <div class="flex items-start space-x-3 max-w-[85%]">
+                    <img src="${currentPersona.avatar}" alt="${currentPersona.name}" class="w-8 h-8 rounded-full object-cover shrink-0 mt-1" />
+                    <div class="bg-white p-3.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm text-xs sm:text-sm text-slate-800 space-y-1">
+                        <p class="font-bold text-[11px] text-slate-500">${currentPersona.name}</p>
+                        <p>${currentPersona.initialMsg}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleSendMessage(event) {
+            event.preventDefault();
+            const inputEl = document.getElementById('user-input');
+            const text = inputEl.value.trim();
+
+            if (!text) return;
+
+            userMessageCount++;
+
+            const chatContainer = document.getElementById('chat-messages');
+
+            // Render User Response
+            chatContainer.innerHTML += `
+                <div class="flex items-start justify-end space-x-3">
+                    <div class="bg-teal-800 text-white p-3.5 rounded-2xl rounded-tr-none shadow-sm text-xs sm:text-sm space-y-1 max-w-[85%]">
+                        <p class="font-bold text-[11px] text-teal-200">You (Tour Guide)</p>
+                        <p>${text}</p>
+                    </div>
+                </div>
+            `;
+
+            inputEl.value = '';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            // Trigger Bot Response with Delay
+            setTimeout(() => {
+                let botReply = "Thank you for explaining the safety procedures so clearly!";
+                if (userMessageCount <= currentPersona.responses.length) {
+                    botReply = currentPersona.responses[userMessageCount - 1];
+                }
+
+                chatContainer.innerHTML += `
+                    <div class="flex items-start space-x-3 max-w-[85%]">
+                        <img src="${currentPersona.avatar}" alt="${currentPersona.name}" class="w-8 h-8 rounded-full object-cover shrink-0 mt-1" />
+                        <div class="bg-white p-3.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm text-xs sm:text-sm text-slate-800 space-y-1">
+                            <p class="font-bold text-[11px] text-slate-500">${currentPersona.name}</p>
+                            <p>${botReply}</p>
+                        </div>
+                    </div>
+                `;
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }, 1000);
+        }
+
+        function openAssessmentModal() {
+            let scoreAcc = 0;
+            let scoreExp = 0;
+            let scoreInt = 0;
+
+            let goodFeedback = "";
+            let improveFeedback = "";
+
+            const actionBtn = document.getElementById('action-next-persona-btn');
+
+            if (userMessageCount === 0) {
+                // SKENARIO 1: Pengguna BELUM chatting sama sekali
+                scoreAcc = 0;
+                scoreExp = 0;
+                scoreInt = 0;
+
+                goodFeedback = "No conversation recorded. You ended the simulation before explaining safety instructions.";
+                improveFeedback = "Please type and send responses explaining safety equipment (life jacket, whistle) before clicking Finish.";
+
+                if (actionBtn) {
+                    actionBtn.innerText = "Try Next Tourist Persona";
+                    actionBtn.onclick = function() {
+                        // Beralih ke persona berikutnya secara berurutan
+                        const personaKeys = ['senior', 'child', 'teen', 'family'];
+                        let currentIndex = personaKeys.indexOf(currentPersona.key);
+                        let nextIndex = (currentIndex + 1) % personaKeys.length;
+                        
+                        document.getElementById('persona-select').value = personaKeys[nextIndex];
+                        switchPersona(personaKeys[nextIndex]);
+                        closeAssessmentModal();
+                    };
+                }
+            } else {
+                // SKENARIO 2: Pengguna SUDAH chatting dan menyelesaikan simulasi
+                scoreAcc = Math.min(100, Math.max(50, userMessageCount * 25));
+                scoreExp = Math.min(100, Math.max(50, userMessageCount * 22));
+                scoreInt = Math.min(100, Math.max(50, userMessageCount * 20));
+
+                goodFeedback = `You successfully adapted your safety instructions for ${currentPersona.name} (${currentPersona.tag}) and emphasized key safety gear.`;
+                improveFeedback = "Always remember to mention emergency signals (whistle), evacuation points, and hold onto handrails when moving.";
+
+                if (actionBtn) {
+                    actionBtn.innerText = "Back to Dashboard ➔";
+                    actionBtn.onclick = function() {
+                        window.location.href = "dashboard.html";
+                    };
+                }
+            }
+
+            // Update Tampilan Angka Skor
+            document.getElementById('score-accuracy').innerText = `${scoreAcc}/100`;
+            document.getElementById('score-expression').innerText = `${scoreExp}/100`;
+            document.getElementById('score-interaction').innerText = `${scoreInt}/100`;
+
+            // Update Teks Feedback
+            document.getElementById('feedback-good').innerText = goodFeedback;
+            document.getElementById('feedback-improve').innerText = improveFeedback;
+
+            // Tampilkan Modal
+            document.getElementById('assessment-modal').classList.remove('hidden');
+        }
+
+        function closeAssessmentModal() {
+            document.getElementById('assessment-modal').classList.add('hidden');
+        }
+
+        window.onload = function() {
+            switchPersona('senior');
+        };
+    </script>
+</body>
+</html>

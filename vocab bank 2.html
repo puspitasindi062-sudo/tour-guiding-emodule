@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.1 Vocabulary Bank - Tour Guiding E-Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* 3D Flip Card Styles */
+        .perspective-card {
+            perspective: 1000px;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease-in-out;
+            transform-style: preserve-3d;
+        }
+        .card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 0.75rem;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="landing page.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
+            <a href="unit 1.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 2: Safety Procedures</a>
+        </nav>
+    </header>
+
+    <!-- Main Container Card -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
+        <div class="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-xl space-y-6">
+            
+            <!-- Section Title -->
+            <h2 class="text-xl sm:text-xl font-bold text-slate-900">A.1 Vocabulary Bank</h2>
+
+            <!-- Grid Container: 2 cols on mobile, 3 on tablet, 6 on desktop -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+
+                <!-- 1. Life Jacket -->
+                <div class="h-44 perspective-card">
+                            <div id="card-1" class="card-inner">
+                               <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1732071194919-736858247dd3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                                    <div class="relative z-20 flex justify-between items-start">
+                                        <button type="button" onclick="flipCard(event, 'card-1')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                        <button type="button" onclick="speakText('Life jacket. Put on your life jacket before entering the boat.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                            <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                    <div class="relative z-10">
+                                        <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Life jacket</h4>
+                                        <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">Put on your life jacket before entering the boat.</p>
+                                    </div>
+                                </div>
+                                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                                    <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                        <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                        <button type="button" onclick="flipCard(event, 'card-1')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                                    </div>
+                                    <div class="my-auto">
+                                        <p class="text-[10px] font-extrabold text-teal-300">Jaket Pelampung</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">sebuah alat bantu mengapung yang digunakan untuk menjaga keselamatan diri saat berada di air.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- 2. Safety Briefing -->
+                        <div class="h-44 perspective-card">
+                            <div id="card-2" class="card-inner">
+                                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1754547368288-344480baea51?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                                    <div class="relative z-20 flex justify-between items-start">
+                                        <button type="button" onclick="flipCard(event, 'card-2')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                        <button type="button" onclick="speakText('Safety Briefing. Please listen carefully to the following safety instructions.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                            <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                    <div class="relative z-10">
+                                        <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Safety Briefing</h4>
+                                        <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">Please listen carefully to the following safety instructions.</p>
+                                    </div>
+                                </div>
+                                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                                    <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                        <span class="text-[8px] font-bold text-amber-400 uppercase">Noun Phrase</span>
+                                        <button type="button" onclick="flipCard(event, 'card-2')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                                    </div>
+                                    <div class="my-auto">
+                                        <p class="text-[10px] font-extrabold text-teal-300">Pengarahan Keselamatan</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">pengarahan singkat mengenai prosedur keselamatan, potensi bahaya, dan jalur evakuasi yang wajib dilakukan sebelum memulai suatu pekerjaan atau kegiatan.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- 3. Slippery -->
+                        <div class="h-44 perspective-card">
+                            <div id="card-3" class="card-inner">
+                                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1610768566686-9c5be70d3ae8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                                    <div class="relative z-20 flex justify-between items-start">
+                                        <button type="button" onclick="flipCard(event, 'card-3')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                        <button type="button" onclick="speakText('Slippery. The road is slippery. Be careful.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                            <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                    <div class="relative z-10">
+                                        <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Slippery</h4>
+                                        <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">The road is slippery. Be careful.</p>
+                                    </div>
+                                </div>
+                                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                                    <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                        <span class="text-[8px] font-bold text-amber-400 uppercase">Adjective</span>
+                                        <button type="button" onclick="flipCard(event, 'card-3')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                                    </div>
+                                    <div class="my-auto">
+                                        <p class="text-[10px] font-extrabold text-teal-300">Licin</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">permukaan yang sulit dipegang atau dipijak karena basah, berminyak, atau berlumut.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- 4. Guide Rope -->
+                <div class="h-44 perspective-card">
+                    <div id="card-4" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1778793226580-db31015ea1e8?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-4')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Guide Rope. Use the guide rope for support while climbing.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Guide Rope</h4>
+                                <p class="text-[8px] text-slate-100 mt-1 leading-snug">Use the guide rope for support while climbing.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun Phrase</span>
+                                <button type="button" onclick="flipCard(event, 'card-4')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Tali Panduan</p>
+                                <p class="text-[7.5px] text-slate-300 mt-1">tali yang digunakan untuk memberikan dukungan saat mendaki.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Handrail -->
+                <div class="h-44 perspective-card">
+                    <div id="card-5" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/e/ea/Sveaplans_gymn_trappa_1.jpg?utm_source=id.wikipedia.org&utm_campaign=index&utm_content=original');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-5')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Handrail. Grip the handrail firmly when walking down the stairs.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Handrail</h4>
+                                <p class="text-[8px] text-slate-100 mt-1 leading-snug">Grip the handrail firmly when walking down the stairs.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-5')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Pegangan Tangan</p>
+                                <p class="text-[7.5px] text-slate-300 mt-1">pegangan tangan yang dipasang pada dinding atau di atas pagar pembatas (railing) tangga untuk membantu menjaga keseimbangan saat naik atau turun.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Whistle -->
+                <div class="h-44 perspective-card">
+                    <div id="card-6" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIBwEHYMrdapXfXfRr9z2yTozamDyFxvSIe6zehECJLcme5an5COpfAEkG&s=10');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-6')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Whistle. Blow the whistle to signal an emergency.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Whistle</h4>
+                                <p class="text-[8px] text-slate-100 mt-1 leading-snug">Blow the whistle to signal an emergency.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-6')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Peluit</p>
+                                <p class="text-[7.5px] text-slate-300 mt-1"> alat kecil yang ditiup untuk menghasilkan suara nyaring (seperti peluit polisi atau peluit kereta api).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. First Aid Kit -->
+                <div class="h-44 perspective-card">
+                    <div id="card-7" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1624638760852-8ede1666ab07?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-7')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('First Aid Kit. Always carry a first-aid kit when hiking in remote areas.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                  <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                     </button>
+                                    </div>
+                                    <div class="relative z-10">
+                                        <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">First Aid Kit</h4>
+                                        <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">Always carry a first-aid kit when hiking in remote areas.</p>
+                                    </div>
+                                </div>
+                                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                                    <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                        <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-7')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                             </div>
+                                    <div class="my-auto">
+                                        <p class="text-[10px] font-extrabold text-teal-300">Kotak P3K</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">tempat penyimpanan khusus untuk perlengkapan dan obat pertolongan pertama pada kecelakaan yang wajib dimiliki di rumah, kantor, atau kendaraan.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- 8. Emergency -->
+                <div class="h-44 perspective-card">
+                            <div id="card-8" class="card-inner">
+                                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4gBgMlsW1BBTkS5XHKfF433r6M2yzwQijffQFeLEl0A&s=10');">
+                                    <div class="relative z-20 flex justify-between items-start">
+                                        <button type="button" onclick="flipCard(event, 'card-8')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                        <button type="button" onclick="speakText('Emergency. Dial local emergency services in the case of an accident.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                            <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                    <div class="relative z-10">
+                                        <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Emergency</h4>
+                                        <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">Dial local emergency services in the case of an accident.</p>
+                                    </div>
+                                </div>
+                                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                                    <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                        <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                        <button type="button" onclick="flipCard(event, 'card-8')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                                    </div>
+                                    <div class="my-auto">
+                                        <p class="text-[10px] font-extrabold text-teal-300">Keadaan Darurat</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">keadaan atau situasi kritis yang terjadi secara mendadak, tidak terduga, dan berbahaya sehingga memerlukan tindakan atau pertolongan secepat mungkin.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- 9. Evacuation Point -->
+                 <div class="h-44 perspective-card">
+                            <div id="card-9" class="card-inner">
+                                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://cdn11.bigcommerce.com/s-10c6f/products/48500/images/71433/FS26099__06944.1595022660.1280.1280.jpg?c=2');">
+                                    <div class="relative z-20 flex justify-between items-start">
+                                        <button type="button" onclick="flipCard(event, 'card-9')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                        <button type="button" onclick="speakText('Evacuation Point. Gather at the designated evacuation point during an alarm.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                            <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                    <div class="relative z-10">
+                                        <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Evacuation Point</h4>
+                                        <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">Gather at the designated evacuation point during an alarm.</p>
+                                    </div>
+                                </div>
+                                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                                    <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                        <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                        <button type="button" onclick="flipCard(event, 'card-9')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                                    </div>
+                                    <div class="my-auto">
+                                        <p class="text-[10px] font-extrabold text-teal-300">Titik Kumpul Evakuasi</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">lokasi aman yang telah ditentukan sebelumnya untuk tempat berkumpul sementara bagi seluruh penghuni bangunan, pekerja, atau pengunjung saat terjadi keadaan darurat.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- 11. Hazard -->
+                <div class="h-44 perspective-card">
+              <div id="card-11" class="card-inner">
+                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,f_auto,q_auto:best,w_640/v1634025439/01gn0ajy4yynrkmd3g47aagg65.jpg');">
+                  <div class="relative z-20 flex justify-between items-start">
+                    <button type="button" onclick="flipCard(event, 'card-11')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                    <button type="button" onclick="speakText('Hazard. Watch out for the wet floor hazard.')" class="hover:scale-125 transition cursor-pointer text-white">
+                      <i data-lucide="volume-2" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                  <div class="relative z-10">
+                    <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Hazard</h4>
+                    <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">Watch out for the wet floor hazard.</p>
+                  </div>
+                </div>
+                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                  <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                    <span class="text-[8px] font-bold text-amber-300 uppercase">Noun</span>
+                    <button type="button" onclick="flipCard(event, 'card-11')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                  </div>
+                  <div class="my-auto">
+                    <p class="text-[10px] font-extrabold text-teal-300">Bahaya</p>
+                    <p class="text-[7.5px] text-slate-200 mt-1">sumber, situasi, atau kondisi yang berpotensi menimbulkan kerugian, cedera, gangguan kesehatan, kerusakan alat, atau pencemaran lingkungan.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+                <!-- 12. Precaution -->
+                <div class="h-44 perspective-card">
+              <div id="card-12" class="card-inner">
+                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://www.sustainable-environment.org.uk/wp-content/uploads/2019/01/Precautions-tips-for-PCBs.png');">
+                  <div class="relative z-20 flex justify-between items-start">
+                    <button type="button" onclick="flipCard(event, 'card-12')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                    <button type="button" onclick="speakText('Precaution. Wear protective gloves as a precaution.')" class="hover:scale-125 transition cursor-pointer text-white">
+                      <i data-lucide="volume-2" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                  <div class="relative z-10">
+                    <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Precaution</h4>
+                    <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">Wear protective gloves as a precaution.</p>
+                  </div>
+                </div>
+                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                  <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                    <span class="text-[8px] font-bold text-amber-300 uppercase">Noun</span>
+                    <button type="button" onclick="flipCard(event, 'card-12')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                  </div>
+                  <div class="my-auto">
+                    <p class="text-[10px] font-extrabold text-teal-300">Pencegahan</p>
+                    <p class="text-[7.5px] text-slate-200 mt-1">tindakan yang dilakukan lebih dulu (sebelum terjadi) untuk menghindari bahaya, risiko, atau hal buruk di masa depan.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+                
+                <!-- 14. Mandatory -->
+                <div class="h-44 perspective-card">
+              <div id="card-14" class="card-inner">
+                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://i.pinimg.com/1200x/6a/39/46/6a394647ae64272b6a61eb31c62271c1.jpg');">
+                  <div class="relative z-20 flex justify-between items-start">
+                    <button type="button" onclick="flipCard(event, 'card-14')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                    <button type="button" onclick="speakText('Mandatory. Wearing a helmet is mandatory on this trail.')" class="hover:scale-125 transition cursor-pointer text-white">
+                      <i data-lucide="volume-2" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                  <div class="relative z-10">
+                    <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Mandatory</h4>
+                    <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">Wearing a helmet is mandatory on this trail.</p>
+                  </div>
+                </div>
+                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                  <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                    <span class="text-[8px] font-bold text-amber-300 uppercase">Adjective</span>
+                    <button type="button" onclick="flipCard(event, 'card-14')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                  </div>
+                  <div class="my-auto">
+                    <p class="text-[10px] font-extrabold text-teal-300">Wajib</p>
+                    <p class="text-[7.5px] text-slate-300 mt-1">wajib, harus dilakukan, atau mengikat.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+                <!-- 15. Prohibited -->
+                <div class="h-44 perspective-card">
+                    <div id="card-15" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzewVc2a3hQugnMnZeNTvsm5R5S-sUXQvRdFT5_CZ31MQzhpuuNsrGcZRy&s=10');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-15')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Prohibited. Smoking is prohibited in this area.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Prohibited</h4>
+                                <p class="text-[8px] text-slate-100 mt-1 leading-snug">Smoking is prohibited in this area.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Adjective</span>
+                                <button type="button" onclick="flipCard(event, 'card-15')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Dilarang / Terlarang</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">sesuatu yang tidak diperbolehkan oleh hukum, aturan, atau kebijakan yang berlaku.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 16. Harness -->
+                <div class="h-44 perspective-card">
+                    <div id="card-16" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://i.pinimg.com/736x/be/6d/4d/be6d4d0a22a7eb91f86fbf9fc5c4aced.jpg');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-16')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Harness. Secure your harness before starting the climb.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Harness</h4>
+                                <p class="text-[8px] text-slate-100 mt-1 leading-snug">Secure your harness before starting the climb.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-16')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Tali Pengaman</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">Alat keselamatan kerja atau olahraga yang mengikat tubuh seseorang ke titik jangkar (anchor point) yang aman.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 17. Strong Current -->
+                <div class="h-44 perspective-card">
+                            <div id="card-17" class="card-inner">
+                                <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyDUPO71Wr_uz5nOZ5KvaXVit12NINlwj_XLndaDidmcbjPMeSW-9nJcs&s=10');">
+                                    <div class="relative z-20 flex justify-between items-start">
+                                        <button type="button" onclick="flipCard(event, 'card-17')" class="text-[10px] font-bold bg-black/60 hover:bg-black/80 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                        <button type="button" onclick="speakText('Strong current. Be careful because the river has a strong current.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                            <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                    <div class="relative z-10">
+                                        <h4 class="text-[11px] font-bold leading-tight drop-shadow-md">Strong Current</h4>
+                                        <p class="text-[8px] text-slate-100 line-clamp-2 mt-1 drop-shadow">Be careful because the river has a strong current.</p>
+                                    </div>
+                                </div>
+                                <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                                    <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                        <span class="text-[8px] font-bold text-amber-400 uppercase">Adjective Phrase</span>
+                                        <button type="button" onclick="flipCard(event, 'card-17')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                                    </div>
+                                    <div class="my-auto">
+                                        <p class="text-[10px] font-extrabold text-teal-300">Arus yang kuat</p>
+                                        <p class="text-[7.5px] text-slate-300 mt-1">kondisi di mana pergerakan air bawah laut atau permukaan sangat kencang sehingga membutuhkan kehati-hatian ekstra atau alat bantu khusus.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- 18. Restricted Area -->
+                <div class="h-44 perspective-card">
+                    <div id="card-18" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://i.pinimg.com/1200x/af/c3/0a/afc30aa10c84592ec517342486c59c53.jpg');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-18')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Restricted Area. This area is off-limits to the public.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight">Restricted Area</h4>
+                                <p class="text-[8px] text-blue-200 mt-1 leading-snug">This area is off-limits to the public.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun</span>
+                                <button type="button" onclick="flipCard(event, 'card-18')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Kawasan terbatas</p>
+                                <p class="text-[7.5px] text-slate-300 mt-1">suatu wilayah atau ruang tertentu yang tidak boleh dimasuki atau dilintasi sembarangan orang karena memiliki aturan ketat, tingkat pengamanan tinggi, atau potensi bahaya.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 19. Low Visibility -->
+                <div class="h-44 perspective-card">
+                    <div id="card-19" class="card-inner">
+                        <div class="card-face overflow-hidden text-white p-2.5 flex flex-col justify-between shadow-md bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf3EL8KYKK6ifNvlzyW7_mLT21U1hScOrtMh5_w0bzFmiVfecPZ0luXnrt&s=10');">
+                            <div class="relative z-20 flex justify-between items-start">
+                                <button type="button" onclick="flipCard(event, 'card-19')" class="text-[10px] font-bold bg-black/60 text-white px-1.5 py-0.5 rounded-full transition cursor-pointer">ⓘ</button>
+                                <button type="button" onclick="speakText('Low Visibility. Be cautious of reduced visibility conditions.')" class="hover:scale-125 transition cursor-pointer text-white">
+                                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="relative z-10">
+                                <h4 class="text-[11px] font-bold leading-tight">Low Visibility</h4>
+                                <p class="text-[8px] text-blue-200 mt-1 leading-snug">Be cautious of reduced visibility conditions.</p>
+                            </div>
+                        </div>
+                        <div class="card-face card-back bg-slate-900 text-white p-2.5 flex flex-col justify-between border border-slate-700 shadow-md">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-1">
+                                <span class="text-[8px] font-bold text-amber-400 uppercase">Noun Phrase</span>
+                                <button type="button" onclick="flipCard(event, 'card-19')" class="text-[10px] bg-slate-700 px-1.5 rounded">✕</button>
+                            </div>
+                            <div class="my-auto">
+                                <p class="text-[10px] font-extrabold text-teal-300">Jarak pandang rendah</p>
+                                <p class="text-[7.5px] text-slate-300 mt-1">kondisi ketika kejernihan penglihatan atau jarak pandang seseorang berkurang secara signifikan sehingga objek, rambu, atau kendaraan di kejauhan sulit atau tidak dapat terlihat dengan jelas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Next Button at Bottom Right -->
+            <div class="flex justify-end pt-4">
+                <a href="Ekspresi 2.html" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs sm:text-sm font-semibold px-8 py-2.5 rounded-full transition-all shadow-md">
+                    Next
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Controls -->
+    <script>
+        // Lucide Icons Initialization
+        lucide.createIcons();
+
+        // Navbar Mobile Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Flip Card Handler
+        function flipCard(event, cardId) {
+            event.stopPropagation();
+            const card = document.getElementById(cardId);
+            if (card) {
+                card.classList.toggle('flipped');
+            }
+        }
+
+        // Text-to-Speech Handler
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Browser Anda tidak mendukung Text-To-Speech.');
+            }
+        }
+    </script>
+</body>
+</html>

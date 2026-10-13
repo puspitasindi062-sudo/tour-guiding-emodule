@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Mandiri - Tour Guiding E-Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar (Fixed di Atas) -->
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md w-full flex-shrink-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="landing page.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
+            <a href="unit 1.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 2: Safety Procedures</a>
+        </nav>
+    </header>
+
+    <!-- Main Outer Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex-grow w-full flex flex-col justify-between">
+        
+        <!-- Top Page Badge Indicator (e.g., 1/5) -->
+        <div class="flex justify-end mb-3">
+            <div id="page-badge" class="bg-teal-100 text-teal-900 border border-teal-300 font-bold text-xs px-4 py-1.5 rounded-full shadow-sm">
+                1/5
+            </div>
+        </div>
+
+        <!-- PRACTICE CARD WRAPPER -->
+        <div class="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-xl flex flex-col justify-between flex-grow min-h-[550px]">
+            
+            <!-- PAGE 1: MULTIPLE CHOICE (10 Questions) -->
+            <div id="page-1" class="practice-page space-y-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Multiple Choice</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Choose the correct answers for each question.</p>
+                </div>
+
+                <div id="mc-questions-container" class="space-y-6">
+                    <!-- Dynamic MC Questions -->
+                </div>
+            </div>
+
+            <!-- PAGE 2: MATCH THE VOCABULARY (Angka Tetap 1-6 Berurutan) -->
+            <div id="page-2" class="practice-page hidden space-y-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Match the Vocabulary</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Look at the picture on the left. Match them with the correct words on the right.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                    <!-- Sisi Kiri: Foto dengan nomor 1-6 berurutan -->
+                    <div id="match-left-container" class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <!-- Dynamic Left Image Cards -->
+                    </div>
+
+                    <!-- Sisi Kanan: Dropdown Pilihan Kata -->
+                    <div id="match-right-container" class="lg:col-span-5 space-y-3">
+                        <!-- Dynamic Right Inputs -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 3: FILL IN THE BLANKS -->
+            <div id="page-3" class="practice-page hidden space-y-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Fill in the Blanks</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Complete the sentences with the correct words from the box.</p>
+                </div>
+
+                <!-- Word Box Options -->
+                <div id="word-box" class="flex flex-wrap gap-2 p-3 bg-teal-50 border border-teal-200 rounded-2xl">
+                    <!-- Dynamic Word Box Chips -->
+                </div>
+
+                <div id="fitb-container" class="space-y-4">
+                    <!-- Dynamic Sentences with Inputs -->
+                </div>
+            </div>
+
+            <!-- PAGE 4: ARRANGE THE DIALOGUE -->
+            <div id="page-4" class="practice-page hidden space-y-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Arrange the Dialogue</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Put the sentences into the correct chronological order (1 to 8).</p>
+                </div>
+
+                <div id="arrange-container" class="space-y-3">
+                    <!-- Dynamic Dialogue Rows -->
+                </div>
+            </div>
+
+            <!-- PAGE 5: SEQUENCING ROUTE (ESSAY & ASSESSMENT) -->
+            <div id="page-5" class="practice-page hidden space-y-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Sequencing Route</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Write clear directions for the tourist based on the scenario and map below.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                    <!-- Left Map Image -->
+                    <div class="md:col-span-6 border border-slate-300 rounded-2xl overflow-hidden shadow-sm bg-slate-100">
+                        <iframe 
+                        class="w-full h-64 border-0"
+                        loading="lazy" 
+                        allowfullscreen 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15797.74245648816!2d115.021503!3d-8.156157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd19b139947aa57%3A0x5030bfbca728360!2sPantai%20Lovina!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid">
+                    </iframe>
+                    <div class="p-3 bg-slate-50 text-[11px] text-slate-600 border-t border-slate-200">
+                        <strong>Map Route:</strong> Hotel Puri Bali ➔ Jl. Mawar ➔ Jl. Binaria ➔ Lovina Beach Entrance.
+                    </div>
+                </div>
+
+                    <!-- Right Scenario Box -->
+                    <div class="md:col-span-6 bg-amber-50/70 border border-amber-200 p-5 rounded-2xl space-y-2">
+                        <h3 class="font-bold text-sm text-amber-900">Scenario:</h3>
+                        <p class="text-xs text-amber-800 leading-relaxed">
+                            A tourist is staying at <strong>Hotel Puri Bali</strong> and wants to visit <strong>Lovina Beach</strong>. The tourist asks you for step-by-step directions. Write down your explanation using appropriate directional terms.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Essay Input Box -->
+                <div class="space-y-2">
+                    <label class="font-bold text-xs text-slate-700 block">Your Answer:</label>
+                    <textarea id="essay-input" rows="5" placeholder="From Hotel Puri Bali, go straight along Jalan Mawar until you see..." class="w-full p-4 rounded-2xl border border-slate-300 text-xs sm:text-sm focus:outline-none focus:border-teal-600 bg-slate-50 leading-relaxed text-slate-800"></textarea>
+                </div>
+
+                <!-- AI Essay Feedback Output Container -->
+                <div id="essay-assessment-box" class="hidden p-5 bg-teal-50 border border-teal-200 rounded-2xl space-y-3">
+                    <!-- Dynamic Feedback -->
+                </div>
+            </div>
+
+            <!-- RESULTS BANNER (PAGE 1-4) -->
+            <div id="result-banner" class="hidden mt-6 p-4 rounded-2xl text-xs sm:text-sm font-semibold"></div>
+
+            <!-- BOTTOM NAVIGATION CONTROLS -->
+            <div class="flex justify-between items-center pt-8 border-t border-slate-100 mt-6">
+                <button id="check-btn" onclick="checkAnswers()" class="bg-amber-400 hover:bg-amber-500 text-slate-900 text-xs sm:text-sm font-bold px-6 py-2.5 rounded-full transition-all shadow-sm">
+                    Check Your Answers
+                </button>
+
+                <div class="flex space-x-3">
+                    <button id="back-btn" onclick="prevPage()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs sm:text-sm font-semibold px-6 py-2.5 rounded-full transition-all shadow-md">
+                        Back
+                    </button>
+                    <button id="next-btn" onclick="nextPage()" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs sm:text-sm font-semibold px-6 py-2.5 rounded-full transition-all shadow-md">
+                        Next
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Navbar Mobile Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        let currentPage = 1;
+
+        // --- DATA BANK ---
+
+        // 1. Multiple Choice Questions (10 Soal)
+        const mcQuestionsData = [
+            { id: 1, q: 'The guide says, "_______ for about 200 meters, then you will see the temple."', options: ['Turn left', 'Go straight', 'Turn right', 'Around the corner'], ans: 'Go straight' },
+            { id: 2, q: '"_______ at the next street. The museum will be on your right."', options: ['Turn right', 'Across from', 'Beside', 'Signpost'], ans: 'Turn right' },
+            { id: 3, q: 'A place where two or more roads meet is called an _______ .', options: ['Intersection', 'Landmark', 'Pathway', 'Trail'], ans: 'Intersection' },
+            { id: 4, q: 'The clock tower is a well-known _______ in Singaraja.', options: ['Landmark', 'Roundabout', 'Junction', 'Corner'], ans: 'Landmark' },
+            { id: 5, q: 'At the circular intersection, take the second exit at the _______ .', options: ['Roundabout', 'Crosswalk', 'Trail', 'Pathway'], ans: 'Roundabout' },
+            { id: 6, q: 'The coffee shop is located right _______ the public library.', options: ['Across from', 'Turn left', 'Go straight', 'Trail'], ans: 'Across from' },
+            { id: 7, q: 'Hikers should stick to the marked mountain _______ to avoid getting lost.', options: ['Trail', 'Junction', 'Corner', 'Roundabout'], ans: 'Trail' },
+            { id: 8, q: 'Please check the wooden _______ to see the distance to Gitgit Waterfall.', options: ['Signpost', 'Beside', 'Opposite', 'Turn right'], ans: 'Signpost' },
+            { id: 9, q: 'The restaurant is located _______ the bank.', options: ['Opposite', 'Go straight', 'Roundabout', 'Trail'], ans: 'Opposite' },
+            { id: 10, q: 'Turn left at the three-way road meeting point, also known as a _______ .', options: ['Junction', 'Landmark', 'Pathway', 'Signpost'], ans: 'Junction' }
+        ];
+
+        // 2. Match Vocabulary Data
+        const matchData = [
+            { id: 'pathway', term: 'Pathway', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4SxUOPsoKWphlmurZmtHFcavV_v3Nko1ayey7vc2ym1i-miolCBjsIXOH&s=10' },
+            { id: 'Crosswalk', term: 'Crosswalk', img: 'https://images.unsplash.com/photo-1775743241784-c0b3041470f7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+            { id: 'Intersection', term: 'Intersection', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1iHi1ihsQVqanZRAb_C6fE8wB31zmqt070szRDrFGMuFoM4xjOkscERyg&s=10' },
+            { id: 'signpost', term: 'Signpost', img: 'https://farm4.staticflickr.com/3875/15020939419_2cea5bac72_o.jpg' },
+            { id: 'junction', term: 'Junction', img: 'https://images.unsplash.com/photo-1678466272132-ded8f248f172?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+            { id: 'roundabout', term: 'Roundabout', img: 'https://images.unsplash.com/photo-1586104730754-ffc0ed261e0d?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }
+        ];
+
+        // Global variable untuk menyimpan urutan acak foto saat render Page 2
+        let currentShuffledImages = [];
+
+        // 3. Fill in the Blanks Sentences
+        const fitbData = [
+            { id: 1, sentence: '1. From the hotel, ________ for about 200 meters.', ans: 'Go straight' },
+            { id: 2, sentence: '2. At the traffic light, ________ and continue along the main road.', ans: 'Turn left' },
+            { id: 3, sentence: '3. When you reach the large tree, ________ and you will see the beach entrance.', ans: 'Turn right' },
+            { id: 4, sentence: '4. The clock tower is a useful ________ for tourists unfamiliar with the area.', ans: 'Landmark' },
+            { id: 5, sentence: '5. At the ________, take the second exit.', ans: 'Roundabout' },
+            { id: 6, sentence: '6. Turn left at the ________ and continue toward the temple.', ans: 'Junction' },
+            { id: 7, sentence: '7. Be careful when you arrive at the ________ because several roads meet there.', ans: 'Intersection' },
+            { id: 8, sentence: '8. The guide told the tourists to stop at the ________ before continuing to the waterfall.', ans: 'Crosswalk' },
+            { id: 9, sentence: '9. Follow the ________ until you reach the temple garden.', ans: 'Pathway' },
+            { id: 10, sentence: '10. The restaurant is ________ the hotel, so tourists can easily find it.', ans: 'Next to' }
+        ];
+        const fitbWords = ['Crosswalk', 'Go straight', 'Landmark', 'Pathway', 'Turn left', 'Next to', 'Intersection', 'Turn right', 'Roundabout', 'Junction'];
+
+        // 4. Arrange Dialogue Data
+        const arrangeData = [
+            { letter: 'A', text: 'Tour Guide: Turn left at the intersection. The temple is on your right.', correctStep: 4 },
+            { letter: 'B', text: 'Tourist: Is it far from here?', correctStep: 5 },
+            { letter: 'C', text: 'Tour Guide: Certainly. Go straight ahead for about 200 meters.', correctStep: 2 },
+            { letter: 'D', text: 'Tourist: Excuse me. Could you tell me how to get to the temple?', correctStep: 1 },
+            { letter: 'E', text: 'Tour Guide: You\'re welcome. Enjoy your visit!', correctStep: 8 },
+            { letter: 'F', text: 'Tourist: Great. Thank you for your help.', correctStep: 7 },
+            { letter: 'G', text: 'Tour Guide: No. It takes about five minutes on foot.', correctStep: 6 },
+            { letter: 'H', text: 'Tourist: What should I do next?', correctStep: 3 }
+        ];
+
+        // Shuffle Utility Function
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+            let newArr = [...array];
+            while (currentIndex != 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [newArr[currentIndex], newArr[randomIndex]] = [newArr[randomIndex], newArr[currentIndex]];
+            }
+            return newArr;
+        }
+
+        // RENDER PAGE 1: Multiple Choice
+        function renderPage1() {
+            const container = document.getElementById('mc-questions-container');
+            container.innerHTML = '';
+            
+            const shuffledQuestions = shuffle(mcQuestionsData);
+
+            shuffledQuestions.forEach((item, index) => {
+                const shuffledOptions = shuffle(item.options);
+                let optionsHTML = '';
+                shuffledOptions.forEach(opt => {
+                    optionsHTML += `
+                        <label class="flex items-center space-x-2 text-xs sm:text-sm text-slate-700 cursor-pointer hover:text-teal-700">
+                            <input type="radio" name="mc-${item.id}" value="${opt}" class="accent-teal-700 w-4 h-4" />
+                            <span>${opt}</span>
+                        </label>
+                    `;
+                });
+
+                container.innerHTML += `
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
+                        <p class="font-bold text-xs sm:text-sm text-slate-900">${index + 1}. ${item.q}</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                            ${optionsHTML}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // RENDER PAGE 2: Match Vocabulary (Angka Tetap 1-6 Berurutan)
+        function renderPage2() {
+            const leftContainer = document.getElementById('match-left-container');
+            const rightContainer = document.getElementById('match-right-container');
+            
+            leftContainer.innerHTML = '';
+            rightContainer.innerHTML = '';
+
+            // Acak urutan gambar
+            currentShuffledImages = shuffle(matchData);
+            
+            // Render Foto Sisi Kiri (Nomor 1-6 SELALU BERURUTAN)
+            currentShuffledImages.forEach((item, index) => {
+                const displayNum = index + 1;
+                leftContainer.innerHTML += `
+                    <div class="relative rounded-2xl overflow-hidden h-32 border border-slate-200 shadow-sm bg-slate-100 group">
+                        <img src="${item.img}" alt="Item ${displayNum}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                        <div class="absolute top-2 left-2 w-7 h-7 rounded-full bg-slate-900/80 text-white font-bold text-xs flex items-center justify-center border border-white/50 backdrop-blur-xs">
+                            ${displayNum}
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Render Dropdown Sisi Kanan (Item 1 sampai 6)
+            const shuffledTerms = shuffle(matchData.map(m => m.term));
+
+            for (let i = 1; i <= 6; i++) {
+                let optionsHTML = '<option value="">-- Select Term --</option>';
+                shuffledTerms.forEach(term => {
+                    optionsHTML += `<option value="${term}">${term}</option>`;
+                });
+
+                rightContainer.innerHTML += `
+                    <div class="flex items-center justify-between bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                        <span class="font-bold text-xs sm:text-sm text-slate-800">Item (${i}):</span>
+                        <select id="match-select-${i}" class="text-xs sm:text-sm border border-slate-300 rounded-xl px-3 py-1.5 bg-white text-slate-800 font-medium focus:outline-none focus:border-teal-600">
+                            ${optionsHTML}
+                        </select>
+                    </div>
+                `;
+            }
+        }
+
+        // RENDER PAGE 3: Fill in the Blanks
+        function renderPage3() {
+            const wordBox = document.getElementById('word-box');
+            const container = document.getElementById('fitb-container');
+
+            wordBox.innerHTML = '';
+            container.innerHTML = '';
+
+            const shuffledWords = shuffle(fitbWords);
+            shuffledWords.forEach(w => {
+                wordBox.innerHTML += `<span class="bg-white border border-teal-300 text-teal-800 px-3 py-1 rounded-full text-xs font-semibold shadow-sm">${w}</span>`;
+            });
+
+            const shuffledFitb = shuffle(fitbData);
+            shuffledFitb.forEach(item => {
+                const parts = item.sentence.split('________');
+                container.innerHTML += `
+                    <div class="text-xs sm:text-sm text-slate-800 leading-relaxed bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                        <span>${parts[0]}</span>
+                        <input type="text" id="fitb-input-${item.id}" data-ans="${item.ans}" placeholder="type answer" class="px-3 py-1 rounded-lg border border-slate-300 text-xs font-semibold text-teal-800 focus:outline-none focus:border-teal-600 bg-white inline-block mx-1 w-36" />
+                        <span>${parts[1]}</span>
+                    </div>
+                `;
+            });
+        }
+
+        // RENDER PAGE 4: Arrange Dialogue
+        function renderPage4() {
+            const container = document.getElementById('arrange-container');
+            container.innerHTML = '';
+
+            const shuffledArrange = shuffle(arrangeData);
+            shuffledArrange.forEach(item => {
+                let optionsHTML = '<option value="">Order</option>';
+                for (let i = 1; i <= 8; i++) {
+                    optionsHTML += `<option value="${i}">Step ${i}</option>`;
+                }
+
+                container.innerHTML += `
+                    <div class="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 rounded-2xl gap-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-7 h-7 rounded-xl bg-slate-800 text-white font-bold text-xs flex items-center justify-center shrink-0">${item.letter}</span>
+                            <p class="text-xs sm:text-sm text-slate-800">${item.text}</p>
+                        </div>
+                        <select id="arrange-select-${item.letter}" data-correct="${item.correctStep}" class="text-xs border border-slate-300 rounded-xl px-2.5 py-1.5 bg-white text-slate-800 font-semibold focus:outline-none focus:border-teal-600">
+                            ${optionsHTML}
+                        </select>
+                    </div>
+                `;
+            });
+        }
+
+        // SWITCH PAGE
+        function showPage(pageNum) {
+            currentPage = pageNum;
+
+            document.querySelectorAll('.practice-page').forEach(el => el.classList.add('hidden'));
+            const activePage = document.getElementById(`page-${pageNum}`);
+            if (activePage) activePage.classList.remove('hidden');
+
+            const banner = document.getElementById('result-banner');
+            if (banner) banner.classList.add('hidden');
+
+            const badge = document.getElementById('page-badge');
+            if (badge) badge.innerText = `${pageNum}/5`;
+
+            const checkBtn = document.getElementById('check-btn');
+            if (checkBtn) {
+                checkBtn.innerText = pageNum === 5 ? "Submit Essay for Assessment" : "Check Your Answers";
+            }
+
+            const backBtn = document.getElementById('back-btn');
+            if (backBtn) {
+                if (pageNum === 1) {
+                    backBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                } else {
+                    backBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }
+
+            const nextBtn = document.getElementById('next-btn');
+            if (nextBtn) {
+                if (pageNum === 5) {
+                    nextBtn.innerText = "Next";
+                } else {
+                    nextBtn.innerText = "Next";
+                }
+            }
+
+            if (pageNum === 1) renderPage1();
+            if (pageNum === 2) renderPage2();
+            if (pageNum === 3) renderPage3();
+            if (pageNum === 4) renderPage4();
+        }
+
+        function nextPage() {
+            if (currentPage < 5) {
+                showPage(currentPage + 1);
+            } else if (currentPage === 5) {
+                // Berpindah ke file chatbot sims 1.html
+                window.location.href = "chatbot sims 1.html"; 
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        }
+
+        function checkAnswers() {
+            const banner = document.getElementById('result-banner');
+
+            if (currentPage === 1) {
+                let score = 0;
+                mcQuestionsData.forEach(item => {
+                    const selected = document.querySelector(`input[name="mc-${item.id}"]:checked`);
+                    if (selected && selected.value === item.ans) score += 10;
+                });
+                if (banner) {
+                    banner.className = "mt-6 p-4 rounded-2xl text-xs sm:text-sm font-semibold bg-teal-100 text-teal-900 border border-teal-300 block";
+                    banner.innerText = `Multiple Choice Result: You scored ${score} out of 100!`;
+                }
+            }
+
+            else if (currentPage === 2) {
+                let correctCount = 0;
+                for (let i = 1; i <= 6; i++) {
+                    const select = document.getElementById(`match-select-${i}`);
+                    const correctTermForThisPosition = currentShuffledImages[i - 1].term;
+
+                    if (select && select.value === correctTermForThisPosition) {
+                        correctCount++;
+                        select.classList.remove('border-slate-300', 'border-red-500');
+                        select.classList.add('border-green-500', 'bg-green-50');
+                    } else if (select) {
+                        select.classList.remove('border-slate-300', 'border-green-500');
+                        select.classList.add('border-red-500', 'bg-red-50');
+                    }
+                }
+                if (banner) {
+                    banner.className = "mt-6 p-4 rounded-2xl text-xs sm:text-sm font-semibold bg-teal-100 text-teal-900 border border-teal-300 block";
+                    banner.innerText = `Matching Result: You correctly matched ${correctCount} out of 6 items!`;
+                }
+            }
+
+            else if (currentPage === 3) {
+                let correctCount = 0;
+                fitbData.forEach(item => {
+                    const input = document.getElementById(`fitb-input-${item.id}`);
+                    if (input && input.value.trim().toLowerCase() === item.ans.toLowerCase()) {
+                        correctCount++;
+                        input.classList.add('border-green-500', 'bg-green-50');
+                    } else if (input) {
+                        input.classList.add('border-red-500', 'bg-red-50');
+                    }
+                });
+                if (banner) {
+                    banner.className = "mt-6 p-4 rounded-2xl text-xs sm:text-sm font-semibold bg-teal-100 text-teal-900 border border-teal-300 block";
+                    banner.innerText = `Fill in the Blanks Result: You got ${correctCount} out of ${fitbData.length} correct!`;
+                }
+            }
+
+            else if (currentPage === 4) {
+                let correctCount = 0;
+                arrangeData.forEach(item => {
+                    const select = document.getElementById(`arrange-select-${item.letter}`);
+                    if (select && parseInt(select.value) === item.correctStep) correctCount++;
+                });
+                if (banner) {
+                    banner.className = "mt-6 p-4 rounded-2xl text-xs sm:text-sm font-semibold bg-teal-100 text-teal-900 border border-teal-300 block";
+                    banner.innerText = `Dialogue Sequence Result: ${correctCount} out of ${arrangeData.length} steps in correct order!`;
+                }
+            }
+
+            else if (currentPage === 5) {
+                const essayText = document.getElementById('essay-input').value.trim();
+                const assessmentBox = document.getElementById('essay-assessment-box');
+
+                if (essayText.length < 20) {
+                    alert("Please write a complete answer before submitting for assessment.");
+                    return;
+                }
+
+                const keywords = ['go straight', 'turn left', 'turn right', 'jalan', 'mawar', 'binaria', 'lovina', 'hotel', 'beach'];
+                let foundKeywords = 0;
+                keywords.forEach(kw => {
+                    if (essayText.toLowerCase().includes(kw)) foundKeywords++;
+                });
+
+                const score = Math.min(100, 60 + (foundKeywords * 5));
+
+                if (assessmentBox) {
+                    assessmentBox.innerHTML = `
+                        <div class="border-b border-teal-200 pb-2 flex justify-between items-center">
+                            <h3 class="font-bold text-sm text-teal-900">Essay Assessment Result</h3>
+                            <span class="px-3 py-1 bg-teal-800 text-white font-bold rounded-full text-xs">Score: ${score}/100</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs text-slate-700 leading-relaxed my-3">
+                            <p><strong>What to Keep:</strong> You clearly mentioned key location names and maintained a polite tone appropriate for a tour guide in Buleleng.</p>
+                            <p><strong>What to Improve:</strong> Ensure you clearly specify turns (e.g., <em>"turn right onto Jalan Binaria"</em>) and include landmark references to guide the tourist safely.</p>
+                        </div>
+
+                        <div class="pt-3 border-t border-teal-200 flex justify-end">
+                            <a href="chatbot sims 1.html" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs sm:text-sm font-semibold px-6 py-2 rounded-full transition-all shadow-md inline-flex items-center gap-2">
+                                <span>Start Chatbot Simulation</span>
+                                <span>➔</span>
+                            </a>
+                        </div>
+                    `;
+                    assessmentBox.classList.remove('hidden');
+                }
+            }
+        }
+
+        window.onload = function() {
+            showPage(1);
+        };
+    </script>
+</body>
+</html>

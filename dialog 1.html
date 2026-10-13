@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.4 Dialogue Model - Tour Guiding E-Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar (Fixed di Atas) -->
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md w-full flex-shrink-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+       <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="index.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
+            <a href="unit 1.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 2: Safety Procedures</a>
+        </nav>
+    </header>
+
+    <!-- Main Container Card -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-grow w-full">
+        
+        <!-- TOP NAVIGATION BUTTONS (TABS) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mb-6">
+            
+            <!-- Tab 1 Button -->
+            <button id="tab-btn-1" onclick="switchDialogue(1)" class="tab-btn flex items-center p-2 rounded-2xl border transition-all text-left bg-sky-500 text-white border-sky-600 shadow-md">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpIbp1VZgegrrsFcdblY3c-t7zar0UyZ5gQqIzSfJvBDMsPclHf_c-G5A&s=10" alt="Waterfall" class="w-12 h-12 rounded-xl object-cover shrink-0 mr-3">
+                <div class="overflow-hidden">
+                    <h3 class="font-bold text-xs sm:text-sm leading-tight truncate">Direction to the Waterfall</h3>
+                    <p class="text-[10px] opacity-90 truncate">From the parking lot to the waterfall.</p>
+                </div>
+            </button>
+
+            <!-- Tab 2 Button -->
+            <button id="tab-btn-2" onclick="switchDialogue(2)" class="tab-btn flex items-center p-2 rounded-2xl border transition-all text-left bg-white text-slate-700 border-slate-300 hover:bg-slate-50 shadow-sm">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM_p1NJM80zUbM3sguQpEZl-gB3y40JhqeCArXCe5abEe8aypApxjTZLLm&s=10" alt="Pasar Anyar" class="w-12 h-12 rounded-xl object-cover shrink-0 mr-3">
+                <div class="overflow-hidden">
+                    <h3 class="font-bold text-xs sm:text-sm leading-tight truncate">Direction to Pasar Anyar</h3>
+                    <p class="text-[10px] text-slate-500 truncate">From Buleleng Harbor to Pasar Anyar in Singaraja.</p>
+                </div>
+            </button>
+
+            <!-- Tab 3 Button -->
+            <button id="tab-btn-3" onclick="switchDialogue(3)" class="tab-btn flex items-center p-2 rounded-2xl border transition-all text-left bg-white text-slate-700 border-slate-300 hover:bg-slate-50 shadow-sm">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5VyuUM-WZYI3tvPG-iEN6sSMdy1N3GKDqYW6Y68nOAFImu8hc5hmNoIj8&s=10" alt="Dolphin Watching" class="w-12 h-12 rounded-xl object-cover shrink-0 mr-3">
+                <div class="overflow-hidden">
+                    <h3 class="font-bold text-xs sm:text-sm leading-tight truncate">Dolphin Watching Meeting Point</h3>
+                    <p class="text-[10px] text-slate-500 truncate">Heading to the dolphin-watching meeting point.</p>
+                </div>
+            </button>
+
+        </div>
+
+        <!-- DIALOGUE CONTENT CARD CONTAINER -->
+        <div class="bg-white p-5 sm:p-8 rounded-3xl border border-slate-200 shadow-xl min-h-[500px] flex flex-col justify-between">
+            
+            <!-- DIALOGUE 1 CONTENT (Gitgit Waterfall) -->
+            <div id="dialogue-1" class="dialogue-content space-y-3.5 sm:space-y-4">
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Excuse me, how do I get to Gitgit Waterfall from here?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Sure! Follow this pathway straight ahead, and you'll pass a small row of souvenir stalls on your left.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Okay, I see the stalls. What's next?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Keep going until you reach a wooden signpost pointing downhill, that's where the trail to the waterfall begins.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Is the trail easy to walk on?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">It's mostly stone steps, so just take your time, especially if it rained recently.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Is it far from the parking area?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Not too far, it's about a 10-minute walk. Just follow the signpost, you can't miss it.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Will I hear the waterfall before I see it?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Yes, actually! Once you start hearing the water, you're almost there.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Great, thank you so much!</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">You're welcome! Enjoy the waterfall, and watch your step on the way down.</div></div>
+            </div>
+
+            <!-- DIALOGUE 2 CONTENT (Pasar Anyar) -->
+            <div id="dialogue-2" class="dialogue-content hidden space-y-3.5 sm:space-y-4">
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Hi, could you tell me how to get to Pasar Anyar from here?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Of course. Go straight along the main road until you reach the intersection.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Then what should I do?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Turn right at the intersection, and the market will be on your left, just across from the old clock tower.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Is the clock tower a big landmark? I want to make sure I don't miss it.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Yes, it's quite tall and hard to miss, it's one of the oldest landmarks in Singaraja.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Good to know. How long does it take on foot?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">About 15 minutes, or you can take a short bike ride if you'd prefer.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Is the market open all day?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">It opens early in the morning and gets quieter by early afternoon, so morning is the best time to visit.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Perfect, I'll head there now. Thanks a lot!</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">No problem, have a great time exploring and try the local snacks near the entrance!</div></div>
+            </div>
+
+            <!-- DIALOGUE 3 CONTENT (Dolphin Watching) -->
+            <div id="dialogue-3" class="dialogue-content hidden space-y-3.5 sm:space-y-4">
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Excuse me, I'm looking for the dolphin watching meeting point. Can you help?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Sure! Go straight down this street until you reach the roundabout.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Okay, and after the roundabout?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Take the second exit, then it's just around the corner, you'll see the boats lined up on the beach.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Is it close to the hotel area?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Yes, it's right next to the row of cafés, about 5 minutes on foot.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Perfect, does that mean I don't need transport?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Exactly, walking is enough, especially this early in the morning.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">Got it. Is there anywhere to buy breakfast nearby before I go?</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">Yes, there's a small warung right beside the meeting point that opens early, perfect for a quick bite.</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-200 text-slate-800 rounded-full text-xs font-bold border border-slate-300 shrink-0 w-24 text-center">Tourist</span><div class="bg-sky-100 text-slate-800 px-4 py-2 rounded-2xl border border-sky-200 text-xs sm:text-sm max-w-xl">That's great, thank you for all the details!</div></div>
+                <div class="flex items-start gap-3"><span class="px-3 py-1 bg-white text-slate-800 rounded-full text-xs font-bold border border-slate-400 shrink-0 w-24 text-center">Tour Guide</span><div class="bg-slate-50 text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 text-xs sm:text-sm max-w-xl">You're welcome! Enjoy the dolphin watching, it's a beautiful way to start the morning.</div></div>
+            </div>
+
+            <!-- NEXT / FINISH BUTTON (ONLY VISIBLE ON LAST TAB) -->
+            <div id="next-btn-container" class="hidden justify-end pt-6">
+                <a href="practice 1.html" onclick="finishModule()" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs sm:text-sm font-semibold px-8 py-2.5 rounded-full transition-all shadow-md">
+                    Next
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Navigation Logic -->
+    <script>
+        // Navbar Mobile Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function switchDialogue(tabIndex) {
+            // Hide all dialogues
+            document.querySelectorAll('.dialogue-content').forEach(el => el.classList.add('hidden'));
+            
+            // Show selected dialogue
+            document.getElementById(`dialogue-${tabIndex}`).classList.remove('hidden');
+
+            // Reset all tab button styles
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById(`tab-btn-${i}`);
+                btn.className = "tab-btn flex items-center p-2 rounded-2xl border transition-all text-left bg-white text-slate-700 border-slate-300 hover:bg-slate-50 shadow-sm";
+                btn.querySelector('p').className = "text-[10px] text-slate-500 truncate";
+            }
+
+            // Highlight active tab button
+            const activeBtn = document.getElementById(`tab-btn-${tabIndex}`);
+            activeBtn.className = "tab-btn flex items-center p-2 rounded-2xl border transition-all text-left bg-sky-500 text-white border-sky-600 shadow-md";
+            activeBtn.querySelector('p').className = "text-[10px] opacity-90 truncate";
+
+            // Show 'Next' button ONLY on the 3rd (last) tab
+            const nextBtnContainer = document.getElementById('next-btn-container');
+            if (tabIndex === 3) {
+                nextBtnContainer.classList.remove('hidden');
+                nextBtnContainer.classList.add('flex');
+            } else {
+                nextBtnContainer.classList.add('hidden');
+                nextBtnContainer.classList.remove('flex');
+            }
+        }
+    </script>
+</body>
+</html>

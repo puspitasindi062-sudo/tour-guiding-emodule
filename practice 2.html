@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Mandiri - Tour Guiding E-Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar (Fixed di Atas) -->
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md w-full flex-shrink-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="landing page.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
+            <a href="unit 1.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 2: Safety Procedures</a>
+        </nav>
+    </header>
+
+<!-- Main Outer Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex-grow w-full flex flex-col justify-between">
+        
+        <!-- Top Page Badge Indicator -->
+        <div class="flex justify-end mb-3">
+            <div id="page-badge" class="bg-teal-100 text-teal-900 border border-teal-300 font-bold text-xs px-4 py-1.5 rounded-full shadow-sm">
+                1/5
+            </div>
+        </div>
+
+        <!-- PRACTICE CARD WRAPPER -->
+        <div class="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-xl flex flex-col justify-between flex-grow min-h-[550px]">
+            
+            <!-- PAGE 1: MULTIPLE CHOICE -->
+            <div id="page-1" class="practice-page space-y-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Multiple Choice</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Choose the correct answers for each question.</p>
+                </div>
+                <div id="mc-questions-container" class="space-y-6"></div>
+            </div>
+
+            <!-- PAGE 2: MATCH THE VOCABULARY -->
+            <div id="page-2" class="practice-page hidden space-y-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Match the Vocabulary</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Look at the picture on the left. Match them with the correct words on the right.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                    <div id="match-left-container" class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
+                    <div id="match-right-container" class="lg:col-span-5 space-y-3"></div>
+                </div>
+            </div>
+
+            <!-- PAGE 3: FILL IN THE BLANKS -->
+            <div id="page-3" class="practice-page hidden space-y-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Fill in the Blanks</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Complete the sentences with the correct words from the box.</p>
+                </div>
+                <div id="word-box" class="flex flex-wrap gap-2 p-3 bg-teal-50 border border-teal-200 rounded-2xl"></div>
+                <div id="fitb-container" class="space-y-4"></div>
+            </div>
+
+            <!-- PAGE 4: ARRANGE THE DIALOGUE -->
+            <div id="page-4" class="practice-page hidden space-y-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Arrange the Dialogue</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Put the sentences in the correct order (1 to 8).</p>
+                </div>
+                <div id="arrange-container" class="space-y-3"></div>
+            </div>
+
+            <!-- PAGE 5: SEQUENCING ROUTE / SAFETY INSTRUCTIONS -->
+            <div id="page-5" class="practice-page hidden space-y-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Sequencing Route</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Arrange the following sentences into a logical sequence of safety instructions (number them 1–10).</p>
+                </div>
+                <div id="seq-instructions-container" class="space-y-3"></div>
+            </div>
+
+            <!-- RESULTS BANNER -->
+            <div id="result-banner" class="hidden mt-6 p-4 rounded-2xl text-xs sm:text-sm font-semibold"></div>
+
+            <!-- BOTTOM NAVIGATION CONTROLS -->
+            <div class="flex justify-between items-center pt-8 border-t border-slate-100 mt-6">
+                <button id="check-btn" onclick="checkAnswers()" class="bg-amber-400 hover:bg-amber-500 text-slate-900 text-xs sm:text-sm font-bold px-6 py-2.5 rounded-full transition-all shadow-sm">
+                    Check Your Answers
+                </button>
+
+                <div class="flex space-x-3">
+                    <button id="back-btn" onclick="prevPage()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs sm:text-sm font-semibold px-6 py-2.5 rounded-full transition-all shadow-md">
+                        Back
+                    </button>
+                    <button id="next-btn" onclick="nextPage()" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs sm:text-sm font-semibold px-6 py-2.5 rounded-full transition-all shadow-md">
+                        Next
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Navbar Mobile Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        let currentPage = 1;
+
+        // --- DATA BANK UNIT 2 ---
+
+        // 1. Multiple Choice Questions (Multiple 2)
+        const mcQuestionsData = [
+            { id: 1, q: '"Please wear your _______ at all times while snorkeling."', options: ['Helmet', 'Life jacket', 'Handrail', 'Signpost'], ans: 'Life jacket' },
+            { id: 2, q: 'What should you say in case of an emergency?', options: ['"Take your time."', '"Let\'s continue the tour."', '"It\'s not a big deal."', '"Stay calm and follow me."'], ans: '"Stay calm and follow me."' },
+            { id: 3, q: '"Touching the coral is strictly _______."', options: ['Mandatory', 'Recommended', 'Prohibited', 'Precaution'], ans: 'Prohibited' },
+            { id: 4, q: 'Before starting a high-risk activity like ziplining, tourists must attend a safety _______ .', options: ['Briefing', 'Whistle', 'Junction', 'Hazard'], ans: 'Briefing' },
+            { id: 5, q: 'In case of a sea rescue emergency, blowing your _______ helps alert rescuers.', options: ['Whistle', 'Harness', 'Handrail', 'Precaution'], ans: 'Whistle' },
+            { id: 6, q: 'To ensure safety when hiking steep paths, hold onto the _______ .', options: ['Handrail', 'Evacuation point', 'First aid kit', 'Strong current'], ans: 'Handrail' },
+            { id: 7, q: 'Strong ocean waves and a _______ can pull swimmers away from the beach.', options: ['Strong current', 'Briefing', 'Signpost', 'Harness'], ans: 'Strong current' },
+            { id: 8, q: 'In an emergency, all tourists should gather at the designated _______ .', options: ['Evacuation point', 'Intersection', 'Hazard', 'Restricted'], ans: 'Evacuation point' },
+            { id: 9, q: 'Tour guides always carry a _______ to treat minor injuries on the trail.', options: ['First aid kit', 'Whistle', 'Handrail', 'Briefing'], ans: 'First aid kit' },
+            { id: 10, q: 'Entering a cliff area without a guide is strictly _______ due to high fall risks.', options: ['Prohibited', 'Mandatory', 'Recommended', 'Briefing'], ans: 'Prohibited' }
+        ];
+
+        // 2. Match Vocabulary Data (Matching 2)
+        const matchData = [
+            { id: 'handrail', term: 'Handrail', img: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Sveaplans_gymn_trappa_1.jpg?utm_source=id.wikipedia.org&utm_campaign=index&utm_content=original' },
+            { id: 'evacuation', term: 'Evacuation Point', img: 'https://cdn11.bigcommerce.com/s-10c6f/products/48500/images/71433/FS26099__06944.1595022660.1280.1280.jpg?c=2' },
+            { id: 'prohibited', term: 'Prohibited', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCP3-PjVHpzE2JXzYC-rpLN05sgnewUPTGDqcXH4fRRA&s=10' },
+            { id: 'firstaid', term: 'First Aid Kit', img: 'https://images.unsplash.com/photo-1624638760852-8ede1666ab07?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+            { id: 'current', term: 'Strong Current', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyDUPO71Wr_uz5nOZ5KvaXVit12NINlwj_XLndaDidmcbjPMeSW-9nJcs&s=10' },
+            { id: 'hazard', term: 'Hazard', img: 'https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,f_auto,q_auto:best,w_640/v1634025439/01gn0ajy4yynrkmd3g47aagg65.jpg' }
+        ];
+
+        let currentShuffledImages = [];
+
+        // 3. Fill in the Blanks Data (Fill in 2)
+        const fitbWords = ['Hazard', 'Emergency', 'Evacuation Point', 'Harness', 'Whistle', 'Not Allowed', 'Intersection', 'Briefing', 'Restricted', 'Precaution'];
+        
+        const fitbData = [
+            { id: 1, sentence: '1. Please check your ________ before you start climbing.', ans: 'Harness' },
+            { id: 2, sentence: '2. Let\'s start with a short safety ________ before we begin the trek.', ans: 'Briefing' },
+            { id: 3, sentence: '3. Hold the ________ carefully while walking down the steps.', ans: 'Handrail' },
+            { id: 4, sentence: '4. This area is ________, please don\'t go beyond the barrier.', ans: 'Restricted' },
+            { id: 5, sentence: '5. If you need help, blow this ________ and wait for assistance.', ans: 'Whistle' },
+            { id: 6, sentence: '6. We take every ________ to keep our guests safe.', ans: 'Precaution' },
+            { id: 7, sentence: '7. Watch out for ________ like loose rocks on the trail.', ans: 'Hazard' },
+            { id: 8, sentence: '8. In case of ________, stay calm and follow your guide.', ans: 'Emergency' },
+            { id: 9, sentence: '9. This spot is our ________, please remember it in case we need to gather here.', ans: 'Evacuation Point' },
+            { id: 10, sentence: '10. Swimming outside the marked area is ________.', ans: 'Not Allowed' }
+        ];
+
+        // 4. Arrange Dialogue Data (Arrange 2)
+        const arrangeData = [
+            { letter: 'A', text: 'Guide: That\'s fine, just let me know and we can take a short break.', correctStep: 6 },
+            { letter: 'B', text: 'Tourist: Understood. What if something happens, like an accident?', correctStep: 3 },
+            { letter: 'C', text: 'Tourist: Okay, and what if I get tired along the way?', correctStep: 5 },
+            { letter: 'D', text: 'Tourist: Sure, go ahead.', correctStep: 2 },
+            { letter: 'E', text: 'Guide: The steps can be slippery, so please hold the handrail and take your time.', correctStep: 7 },
+            { letter: 'F', text: 'Tourist: Got it, thank you for explaining.', correctStep: 8 },
+            { letter: 'G', text: 'Guide: In case of emergency, stay calm, blow this whistle, and stay where you are.', correctStep: 4 },
+            { letter: 'H', text: 'Guide: Before we start, I need to explain a few safety procedures.', correctStep: 1 }
+        ];
+
+        // 5. Sequencing Route / Safety Instructions Data (Sequencing 2)
+        const sequencingData = [
+            { id: 1, text: '"Before we start, I need to explain a few safety procedures."', correctOrder: 1 },
+            { id: 2, text: '"Please wear your life jacket and stay close to the guide."', correctOrder: 2 },
+            { id: 3, text: '"Make sure to hold the handrail on the way down."', correctOrder: 3 },
+            { id: 4, text: '"Do not go beyond the marked area."', correctOrder: 4 },
+            { id: 5, text: '"If you feel dizzy or tired, let me know immediately."', correctOrder: 5 },
+            { id: 6, text: '"In case of emergency, blow this whistle and stay where you are."', correctOrder: 6 },
+            { id: 7, text: '"This spot here is our evacuation point — please remember it."', correctOrder: 7 },
+            { id: 8, text: '"Is everyone clear on the procedure?"', correctOrder: 8 },
+            { id: 9, text: '"Any questions before we begin?"', correctOrder: 9 },
+            { id: 10, text: '"Great, thank you for your cooperation. Let\'s begin!"', correctOrder: 10 }
+        ];
+
+        // Shuffle Utility Function
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+            let newArr = [...array];
+            while (currentIndex != 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [newArr[currentIndex], newArr[randomIndex]] = [newArr[randomIndex], newArr[currentIndex]];
+            }
+            return newArr;
+        }
+
+        // RENDER PAGE 1: Multiple Choice
+        function renderPage1() {
+            const container = document.getElementById('mc-questions-container');
+            if (!container) return;
+            container.innerHTML = '';
+            
+            const shuffledQuestions = shuffle(mcQuestionsData);
+
+            shuffledQuestions.forEach((item, index) => {
+                const shuffledOptions = shuffle(item.options);
+                let optionsHTML = '';
+                shuffledOptions.forEach(opt => {
+                    optionsHTML += `
+                        <label class="flex items-center space-x-2 text-xs sm:text-sm text-slate-700 cursor-pointer hover:text-teal-700">
+                            <input type="radio" name="mc-${item.id}" value="${opt}" class="accent-teal-700 w-4 h-4" />
+                            <span>${opt}</span>
+                        </label>
+                    `;
+                });
+
+                container.innerHTML += `
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
+                        <p class="font-bold text-xs sm:text-sm text-slate-900">${index + 1}. ${item.q}</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                            ${optionsHTML}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // RENDER PAGE 2: Match Vocabulary (Nomor Foto 1-6 Tetap Berurutan)
+        function renderPage2() {
+            const leftContainer = document.getElementById('match-left-container');
+            const rightContainer = document.getElementById('match-right-container');
+            if (!leftContainer || !rightContainer) return;
+
+            leftContainer.innerHTML = '';
+            rightContainer.innerHTML = '';
+
+            currentShuffledImages = shuffle(matchData);
+            
+            currentShuffledImages.forEach((item, index) => {
+                const displayNum = index + 1;
+                leftContainer.innerHTML += `
+                    <div class="relative rounded-2xl overflow-hidden h-32 border border-slate-200 shadow-sm bg-slate-100 group">
+                        <img src="${item.img}" alt="Item ${displayNum}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                        <div class="absolute top-2 left-2 w-7 h-7 rounded-full bg-slate-900/80 text-white font-bold text-xs flex items-center justify-center border border-white/50">
+                            ${displayNum}
+                        </div>
+                    </div>
+                `;
+            });
+
+            const shuffledTerms = shuffle(matchData.map(m => m.term));
+
+            for (let i = 1; i <= 6; i++) {
+                let optionsHTML = '<option value="">-- Select Term --</option>';
+                shuffledTerms.forEach(term => {
+                    optionsHTML += `<option value="${term}">${term}</option>`;
+                });
+
+                rightContainer.innerHTML += `
+                    <div class="flex items-center justify-between bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                        <span class="font-bold text-xs sm:text-sm text-slate-800">Item (${i}):</span>
+                        <select id="match-select-${i}" class="text-xs sm:text-sm border border-slate-300 rounded-xl px-3 py-1.5 bg-white text-slate-800 font-medium focus:outline-none focus:border-teal-600">
+                            ${optionsHTML}
+                        </select>
+                    </div>
+                `;
+            }
+        }
+
+        // RENDER PAGE 3: Fill in the Blanks
+        function renderPage3() {
+            const wordBox = document.getElementById('word-box');
+            const container = document.getElementById('fitb-container');
+            if (!wordBox || !container) return;
+
+            wordBox.innerHTML = '';
+            container.innerHTML = '';
+
+            const shuffledWords = shuffle(fitbWords);
+            shuffledWords.forEach(w => {
+                wordBox.innerHTML += `<span class="bg-white border border-teal-300 text-teal-800 px-3 py-1 rounded-full text-xs font-semibold shadow-sm">${w}</span>`;
+            });
+
+            const shuffledFitb = shuffle(fitbData);
+            shuffledFitb.forEach(item => {
+                const parts = item.sentence.split('________');
+                container.innerHTML += `
+                    <div class="text-xs sm:text-sm text-slate-800 leading-relaxed bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                        <span>${parts[0]}</span>
+                        <input type="text" id="fitb-input-${item.id}" data-ans="${item.ans}" placeholder="type answer" class="px-3 py-1 rounded-lg border border-slate-300 text-xs font-semibold text-teal-800 focus:outline-none focus:border-teal-600 bg-white inline-block mx-1 w-40" />
+                        <span>${parts[1]}</span>
+                    </div>
+                `;
+            });
+        }
+
+        // RENDER PAGE 4: Arrange Dialogue
+        function renderPage4() {
+            const container = document.getElementById('arrange-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const shuffledArrange = shuffle(arrangeData);
+            shuffledArrange.forEach(item => {
+                let optionsHTML = '<option value="">Order</option>';
+                for (let i = 1; i <= 8; i++) {
+                    optionsHTML += `<option value="${i}">Step ${i}</option>`;
+                }
+
+                container.innerHTML += `
+                    <div class="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 rounded-2xl gap-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-7 h-7 rounded-xl bg-slate-800 text-white font-bold text-xs flex items-center justify-center shrink-0">${item.letter}</span>
+                            <p class="text-xs sm:text-sm text-slate-800">${item.text}</p>
+                        </div>
+                        <select id="arrange-select-${item.letter}" data-correct="${item.correctStep}" class="text-xs border border-slate-300 rounded-xl px-2.5 py-1.5 bg-white text-slate-800 font-semibold focus:outline-none focus:border-teal-600">
+                            ${optionsHTML}
+                        </select>
+                    </div>
+                `;
+            });
+        }
+
+        // RENDER PAGE 5: Sequencing Instructions
+        function renderPage5() {
+            const container = document.getElementById('seq-instructions-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const shuffledSeq = shuffle(sequencingData);
+
+            shuffledSeq.forEach((item) => {
+                let optionsHTML = '<option value="">Order (1–10)</option>';
+                for (let i = 1; i <= 10; i++) {
+                    optionsHTML += `<option value="${i}">${i}</option>`;
+                }
+
+                container.innerHTML += `
+                    <div class="flex items-center justify-between p-3.5 bg-slate-50 border border-slate-200 rounded-2xl gap-3">
+                        <p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${item.text}</p>
+                        <select id="seq-select-${item.id}" data-correct="${item.correctOrder}" class="text-xs border border-slate-300 rounded-xl px-3 py-1.5 bg-white text-slate-800 font-bold focus:outline-none focus:border-teal-600">
+                            ${optionsHTML}
+                        </select>
+                    </div>
+                `;
+            });
+        }
+
+        // SWITCH PAGE
+        function showPage(pageNum) {
+            currentPage = pageNum;
+
+            document.querySelectorAll('.practice-page').forEach(el => el.classList.add('hidden'));
+            const activePage = document.getElementById(`page-${pageNum}`);
+            if (activePage) activePage.classList.remove('hidden');
+
+            const banner = document.getElementById('result-banner');
+            if (banner) banner.classList.add('hidden');
+
+            const badge = document.getElementById('page-badge');
+            if (badge) badge.innerText = `${pageNum}/5`;
+
+            const checkBtn = document.getElementById('check-btn');
+            if (checkBtn) {
+                checkBtn.innerText = "Check Your Answers";
+            }
+
+            const backBtn = document.getElementById('back-btn');
+            if (backBtn) {
+                if (pageNum === 1) {
+                    backBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                } else {
+                    backBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }
+
+            const nextBtn = document.getElementById('next-btn');
+            if (nextBtn) {
+                if (pageNum === 5) {
+                    nextBtn.innerText = "Next";
+                } else {
+                    nextBtn.innerText = "Next";
+                }
+            }
+
+            if (pageNum === 1) renderPage1();
+            if (pageNum === 2) renderPage2();
+            if (pageNum === 3) renderPage3();
+            if (pageNum === 4) renderPage4();
+            if (pageNum === 5) renderPage5();
+        }
+
+        function nextPage() {
+            if (currentPage < 5) {
+                showPage(currentPage + 1);
+            } else if (currentPage === 5) {
+                window.location.replace("chatbot sims 2.html");
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        }
+
+        function checkAnswers() {
+            const banner = document.getElementById('result-banner');
+
+            if (currentPage === 1) {
+                let score = 0;
+                mcQuestionsData.forEach(item => {
+                    const selected = document.querySelector(`input[name="mc-${item.id}"]:checked`);
+                    if (selected && selected.value === item.ans) score += 10;
+                });
+                if (banner) {
+                    banner.className = "mt-6 p-4 rounded-2xl text-xs sm:text-sm font-semibold bg-teal-100 text-teal-900 border border-teal-300 block";
+                    banner.innerText = `Multiple Choice Result: You scored ${score} out of 100!`;
+                }
+            }
+
+            else if (currentPage === 2) {
+                let correctCount = 0;
+                for (let i = 1; i <= 6; i++) {
+                    const select = document.getElementById(`match-select-${i}`);
+                    const correctTermForThisPosition = currentShuffledImages[i - 1].term;
+
+                    if (select && select.value === correctTermForThisPosition) {
+                        correctCount++;
+                        select.classList.remove('border-slate-300', 'border-red-500');
+                        select.classList.add('border-green-500', 'bg-green-50');
+                    } else if (select) {
+                        select.classList.remove('border-slate-300', 'border-green-500');
+                        select.classList.add('border-red-500', 'bg-red-50');
+                    }
+                }
+                if (banner) {
+                    banner.className = "mt-6 p-4 rounded-2xl text-xs sm:text-sm font-semibold bg-teal-100 text-teal-900 border border-teal-300 block";
+                    banner.innerText = `Matching Result: You correctly matched ${correctCount} out of 6 items!`;
+                }
+            }
+
+            else if (currentPage === 3) {
+                let correctCount = 0;
+                fitbData.forEach(item => {
+                    const input = document.getElementById(`fitb-input-${item.id}`);
+                    if (input && input.value.trim().toLowerCase() === item.ans.toLowerCase()) {
+                        correctCount++;
+                        input.classList.remove('border-slate-300', 'border-red-500');
+                        input.classList.add('border-green-500', 'bg-green-50');
+                    } else if (input) {
+                        input.classList.remove('border-slate-300', 'border-green-500');
+                        input.classList.add('border-red-500', 'bg-red-50');
+                    }
+                });
+                if (banner) {
+                    banner.className = "mt-6 p-4 rounded-2xl text-xs sm:text-sm font-semibold bg-teal-100 text-teal-900 border border-teal-300 block";
+                    banner.innerText = `Fill in the Blanks Result: You got ${correctCount} out of ${fitbData.length} correct!`;
+                }
+            }
+
+            else if (currentPage === 4) {
+                let correctCount = 0;
+                arrangeData.forEach(item => {
+                    const select = document.getElementById(`arrange-select-${item.letter}`);
+                    if (select && parseInt(select.value) === item.correctStep) {
+                        correctCount++;
+                        select.classList.remove('border-slate-300', 'border-red-500');
+                        select.classList.add('border-green-500', 'bg-green-50');
+                    } else if (select) {
+                        select.classList.remove('border-slate-300', 'border-green-500');
+                        select.classList.add('border-red-500', 'bg-red-50');
+                    }
+                });
+                if (banner) {
+                    banner.className = "mt-6 p-4 rounded-2xl text-xs sm:text-sm font-semibold bg-teal-100 text-teal-900 border border-teal-300 block";
+                    banner.innerText = `Dialogue Sequence Result: ${correctCount} out of ${arrangeData.length} steps in correct order!`;
+                }
+            }
+
+            else if (currentPage === 5) {
+                let correctCount = 0;
+                sequencingData.forEach(item => {
+                    const select = document.getElementById(`seq-select-${item.id}`);
+                    if (select && parseInt(select.value) === item.correctOrder) {
+                        correctCount++;
+                        select.classList.remove('border-slate-300', 'border-red-500');
+                        select.classList.add('border-green-500', 'bg-green-50');
+                    } else if (select) {
+                        select.classList.remove('border-slate-300', 'border-green-500');
+                        select.classList.add('border-red-500', 'bg-red-50');
+                    }
+                });
+                if (banner) {
+                    banner.className = "mt-6 p-4 rounded-2xl text-xs sm:text-sm font-semibold bg-teal-100 text-teal-900 border border-teal-300 block";
+                    banner.innerText = `Sequencing Result: ${correctCount} out of ${sequencingData.length} instructions correctly ordered!`;
+                }
+            }
+        }
+
+        window.onload = function() {
+            showPage(1);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.3 Panduan Pelafalan - Tour Guiding E-Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="landing page.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
+            <a href="unit 1.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 2: Safety Procedures</a>
+        </nav>
+    </header>
+
+    <!-- Main Container Card -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
+        <div class="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-xl space-y-6">
+            
+            <!-- Section Title -->
+            <h2 class="text-xl sm:text-xl font-bold text-slate-900">A.3 Panduan Pelafalan</h2>
+
+            <!-- Cards Grid: 1 col on mobile, 2 on tablet, 4 on desktop -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+                <!-- Card 1: Junction -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Junction</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ˈdʒʌŋkʃən/</p>
+                        <p class="text-sm font-semibold text-amber-500 mt-2 tracking-wide"><span class="text-amber-500 font-bold">JUNGK</span>-shun</p>
+                    </div>
+
+                    <div class="flex justify-center space-x-2 pt-1">
+                        <button onclick="playAudio('Junction')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>▶ Play</span>
+                        </button>
+                        <button id="rec-btn-junction" onclick="toggleRecord('Junction', 'rec-btn-junction', 'assess-junction')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>🎙 Record</span>
+                        </button>
+                    </div>
+
+                    <div class="text-left border border-slate-800 p-2 rounded bg-slate-50 min-h-[75px] flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Assessment</span>
+                        <div id="assess-junction" class="text-[11px] text-slate-600 mt-1">
+                            Tekan 'Record' lalu lafalkan kata di atas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Intersection -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Intersection</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ˌɪntərˈsɛkʃən/</p>
+                        <p class="text-sm font-semibold text-slate-600 mt-2 tracking-wide">in-ter-<span class="text-amber-500 font-bold">SEK</span>-shun</p>
+                    </div>
+
+                    <div class="flex justify-center space-x-2 pt-1">
+                        <button onclick="playAudio('Intersection')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>▶ Play</span>
+                        </button>
+                        <button id="rec-btn-intersection" onclick="toggleRecord('Intersection', 'rec-btn-intersection', 'assess-intersection')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>🎙 Record</span>
+                        </button>
+                    </div>
+
+                    <div class="text-left border border-slate-800 p-2 rounded bg-slate-50 min-h-[75px] flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Assessment</span>
+                        <div id="assess-intersection" class="text-[11px] text-slate-600 mt-1">
+                            Tekan 'Record' lalu lafalkan kata di atas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Roundabout -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Roundabout</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ˈraʊndəbaʊt/</p>
+                        <p class="text-sm font-semibold text-slate-600 mt-2 tracking-wide"><span class="text-amber-500 font-bold">RAUND</span>-uh-baut</p>
+                    </div>
+
+                    <div class="flex justify-center space-x-2 pt-1">
+                        <button onclick="playAudio('Roundabout')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>▶ Play</span>
+                        </button>
+                        <button id="rec-btn-roundabout" onclick="toggleRecord('Roundabout', 'rec-btn-roundabout', 'assess-roundabout')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>🎙 Record</span>
+                        </button>
+                    </div>
+
+                    <div class="text-left border border-slate-800 p-2 rounded bg-slate-50 min-h-[75px] flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Assessment</span>
+                        <div id="assess-roundabout" class="text-[11px] text-slate-600 mt-1">
+                            Tekan 'Record' lalu lafalkan kata di atas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Crossroads -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Crossroads</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ˈkrɒsrəʊdz/</p>
+                        <p class="text-sm font-semibold text-[#1e293b] mt-2 tracking-wide"><span class="text-amber-500 font-bold">KROS</span>-rohdz</p>
+                    </div>
+
+                    <div class="flex justify-center space-x-2 pt-1">
+                        <button onclick="playAudio('Crossroads')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>▶ Play</span>
+                        </button>
+                        <button id="rec-btn-crossroads" onclick="toggleRecord('Crossroads', 'rec-btn-crossroads', 'assess-crossroads')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>🎙 Record</span>
+                        </button>
+                    </div>
+
+                    <div class="text-left border border-slate-800 p-2 rounded bg-slate-50 min-h-[75px] flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Assessment</span>
+                        <div id="assess-crossroads" class="text-[11px] text-slate-600 mt-1">
+                            Tekan 'Record' lalu lafalkan kata di atas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Landmark -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Landmark</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ˈlændmɑːrk/</p>
+                        <p class="text-sm font-semibold text-[#1e293b] mt-2 tracking-wide"><span class="text-amber-500 font-bold">LAND</span>-mark</p>
+                    </div>
+
+                    <div class="flex justify-center space-x-2 pt-1">
+                        <button onclick="playAudio('Landmark')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>▶ Play</span>
+                        </button>
+                        <button id="rec-btn-landmark" onclick="toggleRecord('Landmark', 'rec-btn-landmark', 'assess-landmark')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>🎙 Record</span>
+                        </button>
+                    </div>
+
+                    <div class="text-left border border-slate-800 p-2 rounded bg-slate-50 min-h-[75px] flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Assessment</span>
+                        <div id="assess-landmark" class="text-[11px] text-slate-600 mt-1">
+                            Tekan 'Record' lalu lafalkan kata di atas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Corner -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Corner</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ˈkɔːrnər/</p>
+                        <p class="text-sm font-semibold text-[#1e293b] mt-2 tracking-wide"><span class="text-amber-500 font-bold">COR</span>-ner</p>
+                    </div>
+
+                    <div class="flex justify-center space-x-2 pt-1">
+                        <button onclick="playAudio('Corner')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>▶ Play</span>
+                        </button>
+                        <button id="rec-btn-corner" onclick="toggleRecord('Corner', 'rec-btn-corner', 'assess-corner')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>🎙 Record</span>
+                        </button>
+                    </div>
+
+                    <div class="text-left border border-slate-800 p-2 rounded bg-slate-50 min-h-[75px] flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Assessment</span>
+                        <div id="assess-corner" class="text-[11px] text-slate-600 mt-1">
+                            Tekan 'Record' lalu lafalkan kata di atas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: Pathway -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Pathway</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/ˈpæθweɪ/</p>
+                        <p class="text-sm font-semibold text-[#1e293b] mt-2 tracking-wide"><span class="text-amber-500 font-bold">PATH</span>-way</p>
+                    </div>
+
+                    <div class="flex justify-center space-x-2 pt-1">
+                        <button onclick="playAudio('Pathway')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>▶ Play</span>
+                        </button>
+                        <button id="rec-btn-pathway" onclick="toggleRecord('Pathway', 'rec-btn-pathway', 'assess-pathway')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>🎙 Record</span>
+                        </button>
+                    </div>
+
+                    <div class="text-left border border-slate-800 p-2 rounded bg-slate-50 min-h-[75px] flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Assessment</span>
+                        <div id="assess-pathway" class="text-[11px] text-slate-600 mt-1">
+                            Tekan 'Record' lalu lafalkan kata di atas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8: Trail -->
+                <div class="border border-slate-800 p-4 rounded-md bg-white flex flex-col justify-between space-y-3 text-center shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-900 leading-tight">Trail</h3>
+                        <p class="text-xs text-slate-500 font-mono italic">/treɪl/</p>
+                        <p class="text-sm font-bold text-amber-500 mt-2 tracking-wide">TRAYL</p>
+                    </div>
+
+                    <div class="flex justify-center space-x-2 pt-1">
+                        <button onclick="playAudio('Trail')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>▶ Play</span>
+                        </button>
+                        <button id="rec-btn-trail" onclick="toggleRecord('Trail', 'rec-btn-trail', 'assess-trail')" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs px-3 py-1.5 rounded flex items-center space-x-1 transition-colors">
+                            <span>🎙 Record</span>
+                        </button>
+                    </div>
+
+                    <div class="text-left border border-slate-800 p-2 rounded bg-slate-50 min-h-[75px] flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Assessment</span>
+                        <div id="assess-trail" class="text-[11px] text-slate-600 mt-1">
+                            Tekan 'Record' lalu lafalkan kata di atas.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Next Button at Bottom Right -->
+            <div class="flex justify-end pt-4">
+                <a href="dialog 1.html" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white text-xs sm:text-sm font-semibold px-8 py-2.5 rounded-full transition-all shadow-md">
+                    Next
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Handling -->
+    <script>
+        // Navbar Mobile Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 1. Text-To-Speech (Play Pronunciation)
+        function playAudio(word) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Hentikan audio yang sedang berjalan
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.85; // Kecepatan agak lambat agar pelafalan jelas
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Browser Anda tidak mendukung fitur pemutaran audio.');
+            }
+        }
+
+        // 2. Speech Recognition & Auto Assessment Logic
+        let currentRecognition = null;
+        let activeRecordBtnId = null;
+
+        function toggleRecord(targetWord, btnId, assessId) {
+            const btn = document.getElementById(btnId);
+            const assessContainer = document.getElementById(assessId);
+
+            // Cek dukungan Speech Recognition di browser
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (!SpeechRecognition) {
+                assessContainer.innerHTML = `<span class="text-red-500">Browser tidak mendukung perekaman suara (gunakan Chrome/Edge).</span>`;
+                return;
+            }
+
+            // Jika sedang merekam di tombol yang sama, maka stop
+            if (activeRecordBtnId === btnId && currentRecognition) {
+                currentRecognition.stop();
+                return;
+            }
+
+            // Jika sedang merekam di tempat lain, matikan dulu
+            if (currentRecognition) {
+                currentRecognition.stop();
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            activeRecordBtnId = btnId;
+            currentRecognition = recognition;
+
+            // UI saat mulai merekam
+            btn.classList.remove('bg-[#0f2d4a]', 'hover:bg-[#0a1e32]');
+            btn.classList.add('bg-red-600', 'animate-pulse');
+            btn.innerHTML = `<span>⏹ Stop</span>`;
+            assessContainer.innerHTML = `<span class="text-amber-600 font-semibold italic">Mendengarkan... Silakan lafalkan.</span>`;
+
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const spokenText = event.results[0][0].transcript.trim().toLowerCase();
+                const target = targetWord.toLowerCase();
+
+                // Evaluasi / Assessment
+                if (spokenText === target) {
+                    assessContainer.innerHTML = `
+                        <p class="text-green-700 font-bold">✔ Sempurna!</p>
+                        <p class="text-[10px] text-green-600">Pelafalan intonasi dan artikulasi Anda sangat tepat. Pertahankan!</p>
+                    `;
+                } else if (spokenText.includes(target) || target.includes(spokenText)) {
+                    assessContainer.innerHTML = `
+                        <p class="text-emerald-700 font-bold">✔ Hampir Tepat (${spokenText})</p>
+                        <p class="text-[10px] text-slate-600">Poin dipertahankan: Kejelasan suara.<br><span class="text-amber-700">Perlu ditingkatkan: Penekanan pada suku kata utama.</span></p>
+                    `;
+                } else {
+                    assessContainer.innerHTML = `
+                        <p class="text-red-600 font-bold">✖ Kurang Tepat ("${spokenText}")</p>
+                        <p class="text-[10px] text-slate-600"><span class="text-red-700">Perlu diperbaiki: Artikulasikan vokal lebih jelas.</span> Dengarkan kembali contoh audio 'Play'.</p>
+                    `;
+                }
+            };
+
+            recognition.onerror = function(event) {
+                assessContainer.innerHTML = `<span class="text-red-500 font-medium">Gagal mendeteksi suara (${event.error}). Coba lagi.</span>`;
+                resetBtnState(btn);
+            };
+
+            recognition.onend = function() {
+                resetBtnState(btn);
+                currentRecognition = null;
+                activeRecordBtnId = null;
+            };
+        }
+
+        function resetBtnState(btn) {
+            btn.classList.remove('bg-red-600', 'animate-pulse');
+            btn.classList.add('bg-[#0f2d4a]', 'hover:bg-[#0a1e32]');
+            btn.innerHTML = `<span>🎙 Record</span>`;
+        }
+    </script>
+</body>
+</html>

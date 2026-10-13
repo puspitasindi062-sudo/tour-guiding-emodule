@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Tour Guiding E-Module</title>
+    <!-- Tailwind CSS CDN with custom colors -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-navy-800 text-white px-6 md:px-12 py-3 shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="leading-tight">
+                <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
+                <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown (Interactive) -->
+        <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="index.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
+            <a href="about us.html" class="text-amber-400 font-semibold py-1 transition-colors">About E-Module</a>
+            <a href="features.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Features</a>
+            <a href="contact us.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">About the Research & Project</h1>
+            <p class="text-slate-600 max-w-2xl mx-auto">
+                An innovative digital learning solution developed to bridge practical tour guiding competencies and interactive web technology for vocational tourism students.
+            </p>
+        </div>
+
+        <!-- Hero Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">Project Overview</h2>
+            <p class="text-slate-600 leading-relaxed mb-4">
+                This e-module is developed as an undergraduate thesis project focusing on enhancing tour guiding competence—specifically in giving directions and explaining safety procedures. By integrating interactive simulation models and real-time browser-based speech evaluation, learners can practice independently and master professional English expressions used in the tourism industry.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 pt-8 border-t border-slate-100">
+                <div>
+                    <h3 class="font-semibold text-slate-900 mb-1">Target Learner</h3>
+                    <p class="text-sm text-slate-600">Vocational Tourism Students & Tour Guiding Trainees.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-slate-900 mb-1">Methodology</h3>
+                    <p class="text-sm text-slate-600">ADDE Instructional Design Model (Analysis, Design, Development, Evaluation).</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-slate-900 mb-1">Technology Stack</h3>
+                    <p class="text-sm text-slate-600">HTML5, Tailwind CSS, JavaScript, and Web Speech API.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Developer Section -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Developer Profile</h2>
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                <div class="w-24 h-24 bg-navy-800 text-amber-400 rounded-full flex items-center justify-center font-bold text-3xl shadow-md flex-shrink-0">
+                    PSP
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900">Putu Sindi Puspita Maharani</h3>
+                    <p class="text-indigo-600 font-medium text-sm mb-3">Undergraduate Student</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Final-year university student dedicated to blending educational technology with vocational learning tools. Passionate about web development, interactive instructional design, and enhancing practical language proficiency for future tourism professionals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 border-t border-slate-800 text-white py-6 text-center text-sm">
+        <p>&copy; 2026 Tour Guiding E-Module. Developed for Academic Research.</p>
+    </footer>
+
+    <!-- Interactive Menu Script -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
