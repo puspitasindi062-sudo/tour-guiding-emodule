@@ -1,356 +1,653 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Simulation Unit 2 - Tour Guiding E-Module</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Unit 2: Tour Guiding Simulation - Safety & Emergency Procedures</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        .chat-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-scroll::-webkit-scrollbar-track {
+            background: rgba(241, 245, 249, 0.8);
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: rgba(217, 119, 6, 0.4);
+            border-radius: 3px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(217, 119, 6, 0.7);
+        }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-between">
+<body class="bg-slate-50 text-slate-800 font-sans h-screen flex flex-col overflow-hidden">
 
     <!-- Header / Navbar -->
-    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md sticky top-0 z-50 w-full">
+    <header class="bg-[#1e293b] text-white px-6 md:px-12 py-3 shadow-md w-full flex-shrink-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
             <div class="leading-tight">
                 <h1 class="text-sm font-bold text-white tracking-wide">Tour Guiding</h1>
                 <h2 class="text-sm font-bold text-amber-400 -mt-0.5">E-Module</h2>
-                <p class="text-[10px] text-slate-300">Tour Guiding in Action - Unit 2</p>
+                <p class="text-[10px] text-slate-300">Tour Guiding in Action</p>
             </div>
 
-            <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h18"></path>
-                </svg>
-            </button>
+            <!-- Controls / Actions & Hamburger -->
+            <div class="flex items-center gap-2">
+                <button id="btn-show-map" onclick="toggleMapModal()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 flex items-center gap-2 transition shadow-sm">
+                    <i class="fa-solid fa-shield-halved text-amber-500"></i>
+                    <span class="hidden sm:inline">Safety Map</span>
+                </button>
+                <button id="btn-evaluation" onclick="evaluatePerformance()" class="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-xs font-semibold text-slate-950 flex items-center gap-2 transition shadow-md">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <span>Evaluate & Score</span>
+                </button>
+
+                <!-- Hamburger Menu Button -->
+                <button id="menu-toggle" aria-label="Toggle Navigation" class="text-white hover:text-amber-400 focus:outline-none transition-colors p-1 ml-1">
+                    <svg class="w-7 h-7 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
 
-       <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
-            <a href="index.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Home</a>
-            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Dashboard</a>
-            <a href="unit 1.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors">Unit 1: Giving Directions</a>
-            <a href="unit 2.html" class="text-amber-400 font-semibold py-1 transition-colors">Unit 2: Safety Procedures</a>
+        <!-- Mobile Navigation Menu Dropdown -->
+        <nav id="mobile-menu" class="hidden max-w-7xl mx-auto pt-4 pb-2 border-t border-slate-700/60 mt-3 flex flex-col space-y-2">
+            <a href="index.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors text-xs font-medium">Home</a>
+            <a href="dashboard.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors text-xs font-medium">Dashboard</a>
+            <a href="unit 1.html" class="text-gray-200 hover:text-amber-400 py-1 transition-colors text-xs font-medium">Unit 1: Giving Directions</a>
+            <a href="unit 2.html" class="text-amber-400 font-semibold py-1 transition-colors text-xs">Unit 2: Safety Procedures</a>
         </nav>
     </header>
 
-    <!-- Main Outer Container -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-6 flex-grow w-full flex flex-col justify-between">
-        
-        <!-- Simulation Card Container -->
-        <div class="bg-white rounded-3xl border border-slate-200 shadow-xl flex flex-col h-[680px] overflow-hidden">
-            
-            <!-- Chat Header / Tourist Persona Info -->
-            <div class="bg-[#0f2d4a] text-white p-4 sm:p-5 flex flex-wrap gap-3 justify-between items-center border-b border-slate-700">
-                <div class="flex items-center space-x-3">
-                    <div class="relative">
-                        <img id="persona-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Tourist Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-amber-400" />
-                        <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <h2 id="persona-name" class="text-sm sm:text-base font-bold text-white">Arthur Pendelton</h2>
-                            <span id="persona-tag" class="text-[10px] bg-amber-400 text-slate-900 font-extrabold px-2 py-0.5 rounded-full uppercase">Elderly / Senior</span>
+    <!-- Main App Container -->
+    <main class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+        <!-- Left Sidebar: Persona Selector & Info -->
+        <aside class="w-full lg:w-80 bg-white border-r border-slate-200 flex flex-col shrink-0 overflow-y-auto shadow-sm">
+            <div class="p-4 border-b border-slate-200">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Select Tourist Persona</h2>
+                
+                <!-- Persona Cards Container -->
+                <div class="space-y-3" id="persona-selector-container">
+                    <!-- Daniel Reed Card -->
+                    <div onclick="selectPersona('daniel')" id="card-daniel" class="persona-card p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition relative overflow-hidden group shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 rounded-full bg-orange-100 border border-orange-300 flex items-center justify-center shrink-0 text-orange-700 text-xl font-bold">
+                                DR
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-bold text-sm text-slate-900 group-hover:text-amber-600 transition">Daniel Reed</h3>
+                                    <span class="text-[10px] bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded border border-orange-200">Intermediate</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">32 • Australian • Solo Hiker</p>
+                                <p class="text-[11px] text-amber-700 font-medium mt-1"><i class="fa-solid fa-water-fall mr-1"></i>Gitgit Waterfall</p>
+                            </div>
                         </div>
-                        <p id="persona-scenario" class="text-[11px] text-slate-300">Scenario: Nervous first-timer asking about snorkeling safety procedures.</p>
+                    </div>
+
+                    <!-- The Parkers Card -->
+                    <div onclick="selectPersona('parkers')" id="card-parkers" class="persona-card p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition relative overflow-hidden group shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 border border-blue-300 flex items-center justify-center shrink-0 text-blue-700 text-xl font-bold">
+                                JP
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-bold text-sm text-slate-900 group-hover:text-amber-600 transition">J. & E. Parker</h3>
+                                    <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded border border-blue-200">Intermediate</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">34 • British • Family (Kids 4 & 7)</p>
+                                <p class="text-[11px] text-amber-700 font-medium mt-1"><i class="fa-solid fa-umbrella-beach mr-1"></i>Lovina Beach Activity</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Wijaya Family Card -->
+                    <div onclick="selectPersona('wijaya')" id="card-wijaya" class="persona-card p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition relative overflow-hidden group shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center shrink-0 text-emerald-700 text-xl font-bold">
+                                WF
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-bold text-sm text-slate-900 group-hover:text-amber-600 transition">The Wijaya Family</h3>
+                                    <span class="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded border border-emerald-200">Inter–Advanced</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Multi-generational • 5 Members</p>
+                                <p class="text-[11px] text-amber-700 font-medium mt-1"><i class="fa-solid fa-tree mr-1"></i>Buleleng Nature Trail</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Persona Details -->
+            <div class="p-4 space-y-4 flex-1">
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Scenario Profile</h3>
+                    <div id="persona-details-card" class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs space-y-2 text-slate-700">
+                        <!-- Populated dynamically -->
                     </div>
                 </div>
 
-                <!-- Persona Switcher Dropdown & Finish Button -->
-                <div class="flex items-center space-x-2">
-                    <select id="persona-select" onchange="switchPersona(this.value)" class="bg-slate-800 text-white text-xs border border-slate-600 rounded-xl px-3 py-2 font-medium focus:outline-none focus:border-amber-400">
-                        <option value="senior">👴 Elderly / Senior Tourist</option>
-                        <option value="child">👦 Child Tourist (Leo)</option>
-                        <option value="teen">🎧 Teenager Tourist (Maya)</option>
-                        <option value="family">👨‍👩‍👧 Small Family (The Millers)</option>
-                    </select>
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Target Expressions & Challenge</h3>
+                    <div id="persona-skills-card" class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs space-y-2 text-slate-700">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </aside>
 
-                    <button onclick="openAssessmentModal()" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold text-xs px-4 py-2 rounded-full transition-all shadow-sm">
-                        Finish Simulation
+        <!-- Right / Main Area: Chat Interface -->
+        <section class="flex-1 flex flex-col bg-slate-100 overflow-hidden relative">
+            
+            <!-- Chat Header -->
+            <div class="bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-3">
+                    <div id="chat-header-avatar" class="w-8 h-8 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-800 font-bold text-xs">
+                        --
+                    </div>
+                    <div>
+                        <h2 id="chat-header-name" class="font-bold text-sm text-slate-900">Select a persona to start</h2>
+                        <p id="chat-header-status" class="text-[11px] text-slate-500">Unit 2 Simulation active</p>
+                    </div>
+                </div>
+
+                <!-- Voice Mode Toggle -->
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+                        <i class="fa-solid fa-volume-high text-xs text-amber-600"></i>
+                        <span class="text-xs text-slate-700 font-medium">Voice TTS</span>
+                        <input type="checkbox" id="tts-toggle" class="accent-amber-500 cursor-pointer" checked>
+                    </div>
+                    <button onclick="resetConversation()" class="p-2 text-slate-500 hover:text-slate-800 transition" title="Reset Simulation">
+                        <i class="fa-solid fa-rotate-right"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Chat Messages Container -->
-            <div id="chat-messages" class="flex-grow p-4 sm:p-6 overflow-y-auto space-y-4 bg-slate-50">
-                <!-- Dynamic Initial Message generated by JS -->
+            <!-- Chat Messages Log -->
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto chat-scroll space-y-4">
+                <!-- Welcome Banner -->
+                <div class="bg-white border border-slate-200 p-4 rounded-xl text-center max-w-lg mx-auto shadow-sm">
+                    <i class="fa-solid fa-shield-cat text-amber-600 text-2xl mb-2"></i>
+                    <h3 class="font-bold text-slate-900 text-sm">Unit 2 Interactive Safety Roleplay</h3>
+                    <p class="text-xs text-slate-500 mt-1">Practice delivering safety briefings, enforcing trail/beach rules, managing group pacing, and reassuring tourists. Select a persona on the left to begin.</p>
+                </div>
             </div>
 
-            <!-- Chat Input Form -->
-            <form id="chat-form" onsubmit="handleSendMessage(event)" class="p-3 sm:p-4 bg-white border-t border-slate-200 flex items-center gap-2">
-                <input type="text" id="user-input" placeholder="Type your response as a tour guide explaining safety..." class="flex-grow px-4 py-3 rounded-full border border-slate-300 text-xs sm:text-sm focus:outline-none focus:border-teal-600 bg-slate-50 text-slate-800" />
-                <button type="submit" class="bg-[#0f2d4a] hover:bg-[#0a1e32] text-white font-semibold text-xs sm:text-sm px-6 py-3 rounded-full transition-all shadow-md shrink-0">
-                    Send
-                </button>
-            </form>
+            <!-- Chat Input Controls -->
+            <div class="p-3 bg-white border-t border-slate-200 shadow-sm">
+                <form id="chat-form" onsubmit="handleUserSubmit(event)" class="flex items-center gap-2 max-w-4xl mx-auto">
+                    <!-- Voice Input Button -->
+                    <button type="button" id="btn-mic" onclick="toggleMic()" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-700 flex items-center justify-center transition shrink-0" title="Hold/Click to Speak">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
 
-        </div>
+                    <!-- Text Input -->
+                    <input type="text" id="user-input" placeholder="Type your safety instructions here..." class="flex-1 bg-slate-50 border border-slate-300 focus:border-amber-500 focus:outline-none rounded-xl px-4 py-2.5 text-xs md:text-sm text-slate-900 placeholder-slate-400 transition shadow-sm">
+
+                    <!-- Send Button -->
+                    <button type="submit" id="btn-send" class="w-10 h-10 rounded-xl bg-navy-800 hover:bg-slate-800 text-amber-400 font-bold flex items-center justify-center transition shrink-0 shadow-sm">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+                <div class="flex justify-between items-center max-w-4xl mx-auto mt-2 text-[10px] text-slate-500 px-1">
+                    <span><i class="fa-solid fa-circle-info mr-1"></i>Respond as a clear, responsible, and professional tour guide.</span>
+                    <span id="speech-status" class="text-amber-600 font-semibold hidden"><i class="fa-solid fa-wave-square animate-pulse mr-1"></i>Listening...</span>
+                </div>
+            </div>
+
+        </section>
     </main>
 
-    <!-- EVALUATION / ASSESSMENT MODAL -->
-    <div id="assessment-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden">
-        <div class="bg-white max-w-2xl w-full rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
-            
-            <div class="flex justify-between items-start border-b border-slate-100 pb-4">
-                <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Simulation Assessment & Feedback</h2>
-                    <p class="text-xs text-slate-500 mt-0.5">Performance evaluation on safety procedure explanation.</p>
-                </div>
-                <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Completed</span>
-            </div>
-
-            <!-- Score Cards Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center space-y-1">
-                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Safety Explanation</p>
-                    <p id="score-accuracy" class="text-2xl font-extrabold text-teal-700">0/100</p>
-                    <p class="text-[10px] text-slate-400">Clear procedures & gear use</p>
-                </div>
-
-                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center space-y-1">
-                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Tone & Empathy</p>
-                    <p id="score-expression" class="text-2xl font-extrabold text-amber-600">0/100</p>
-                    <p class="text-[10px] text-slate-400">Persona adaptation & reassurance</p>
-                </div>
-
-                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center space-y-1">
-                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Interaction & Clarity</p>
-                    <p id="score-interaction" class="text-2xl font-extrabold text-sky-700">0/100</p>
-                    <p class="text-[10px] text-slate-400">Responsiveness & checking understanding</p>
-                </div>
-            </div>
-
-            <!-- Detailed Feedback Box -->
-            <div class="bg-emerald-50/70 border border-emerald-200 p-4 rounded-2xl space-y-2 text-xs text-slate-700 leading-relaxed">
-                <h3 class="font-bold text-emerald-900 flex items-center gap-1.5 text-sm">
-                    <span>✓</span> Detailed Feedback
+    <!-- Modal: Map / Safety Briefing Reference -->
+    <div id="map-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+                <h3 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-amber-600"></i>
+                    Unit 2 Safety Briefing Guidelines
                 </h3>
-                <p><strong>What went well:</strong> <span id="feedback-good">No conversation recorded.</span></p>
-                <p><strong>Areas to improve:</strong> <span id="feedback-improve">Please type and send directions before ending.</span></p>
-            </div>
-
-            <!-- Modal Action Buttons -->
-            <div class="flex justify-end space-x-3 pt-2">
-                <button onclick="closeAssessmentModal()" class="px-5 py-2.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
-                    Review Chat
-                </button>
-                <button id="action-next-persona-btn" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-[#0f2d4a] text-white hover:bg-[#0a1e32] shadow-md transition-all">
-                    Try Next Tourist Persona
+                <button onclick="toggleMapModal()" class="text-slate-400 hover:text-slate-700">
+                    <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
-
+            <div class="p-4 overflow-y-auto space-y-4 flex-1 bg-slate-50">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center relative overflow-hidden shadow-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-left">
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                            <h4 class="font-bold text-amber-700 text-xs mb-1">1. Gitgit Waterfall Trek</h4>
+                            <p class="text-[11px] text-slate-700">Key Rules: Slippery surfaces</p>
+                            <p class="text-[11px] text-slate-500 mt-1">Stay on marked trail.<br>Do not step on wet rocks.<br>Inform guide if weather changes (heavy rain).</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                            <h4 class="font-bold text-amber-700 text-xs mb-1">2. Lovina Beach Activities</h4>
+                            <p class="text-[11px] text-slate-700">Key Rules: Water safety</p>
+                            <p class="text-[11px] text-slate-500 mt-1">Adult supervision required.<br>Wear life jackets for boats.<br>Swim only in designated areas.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                            <h4 class="font-bold text-amber-700 text-xs mb-1">3. Buleleng Nature Trail</h4>
+                            <p class="text-[11px] text-slate-700">Key Rules: Group & Pace</p>
+                            <p class="text-[11px] text-slate-500 mt-1">Walk at comfortable pace.<br>Hold handrails on steps.<br>Rest at designated rest stops.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- JavaScript Logic -->
-    <script>
-        // Toggle Mobile Menu
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
+    <!-- Modal: Evaluation & Score -->
+    <div id="eval-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+                <h3 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-award text-amber-600"></i>
+                    Rubrik Penilaian D.2 Evaluation Criteria
+                </h3>
+                <button onclick="toggleEvalModal()" class="text-slate-400 hover:text-slate-700">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <div id="eval-content" class="p-5 overflow-y-auto space-y-4 flex-1 bg-slate-50 text-xs text-slate-700">
+                <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl mb-3">
+                    <p class="font-bold text-amber-800 mb-1"><i class="fa-solid fa-circle-info mr-1"></i>Rubrik Penilaian D.2 Overview</p>
+                    <p class="text-[11px] text-amber-900">Your performance is scored based on 4 key aspects. Each aspect is graded from score 1 (Needs Guidance) to 4 (Excellent). Final Score = (Total Score ÷ 16) × 100.</p>
+                </div>
+                <div class="space-y-3">
+                    <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-slate-900 mb-1">1. Ketepatan Instruksi Keselamatan (Safety Instruction Accuracy)</h4>
+                        <p class="text-[11px] text-slate-600"><strong>Score 4:</strong> Instruksi keselamatan sangat akurat, tegas, dan disertai alasan logis.<br><strong>Score 3:</strong> Instruksi akurat, penjelasan alasan minim.<br><strong>Score 2:</strong> Instruksi cukup jelas, ada sedikit keraguan.<br><strong>Score 1:</strong> Instruksi tidak akurat atau membahayakan.</p>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-slate-900 mb-1">2. Penggunaan Ekspresi (Expression & Modals)</h4>
+                        <p class="text-[11px] text-slate-600"><strong>Score 4:</strong> Menggunakan modal verbs (must/should/please) dengan variatif & sopan.<br><strong>Score 3:</strong> Sesuai konteks, kurang variatif.<br><strong>Score 2:</strong> Ekspresi terbatas/berulang.<br><strong>Score 1:</strong> Ekspresi tidak sesuai konteks.</p>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-slate-900 mb-1">3. Pelafalan & Kebahasaan (Pronunciation & Grammar)</h4>
+                        <p class="text-[11px] text-slate-600"><strong>Score 4:</strong> Jelas, alami, & menenangkan.<br><strong>Score 3:</strong> Jelas, sedikit kesalahan.<br><strong>Score 2:</strong> Dapat dipahami, banyak kesalahan tata bahasa.<br><strong>Score 1:</strong> Sulit dipahami.</p>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-slate-900 mb-1">4. Interaksi & Kelancaran (Interaction & Responsiveness)</h4>
+                        <p class="text-[11px] text-slate-600"><strong>Score 4:</strong> Tanggap terhadap pertanyaan/tantangan turis & sangat lancar.<br><strong>Score 3:</strong> Responsif, sedikit jeda.<br><strong>Score 2:</strong> Interaksi terbata-bata.<br><strong>Score 1:</strong> Interaksi sangat terbatas.</p>
+                    </div>
+                </div>
+            </div>
 
-        // Persona Bank Data
-        const personas = {
-            senior: {
-                key: 'senior',
-                name: 'Arthur Pendelton',
-                tag: 'Elderly / Senior',
-                avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80',
-                scenario: 'Nervous first-timer asking about snorkeling safety procedures.',
-                initialMsg: "Hi, I'm a bit nervous. I've never been snorkeling before. Is it safe?",
-                responses: [
-                    "Thank you for reassuring me. Do I really need to wear this life jacket the entire time?",
-                    "Understood. What should I do if I get tired or panic in the water?",
-                    "That gives me peace of mind. Thank you for taking care of us elderly guests!"
-                ]
+            <div class="p-4 border-t border-slate-200 bg-slate-50 flex justify-end">
+                <button onclick="toggleEvalModal()" class="px-4 py-2 rounded-xl bg-navy-800 hover:bg-slate-800 text-amber-400 font-bold text-xs transition shadow-sm">
+                    Close Evaluation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script Logic -->
+    <script>
+        // --- DATA & CONFIGURATION FOR UNIT 2 PERSONAS ---
+        const PERSONAS = {
+            daniel: {
+                id: 'daniel',
+                name: 'Daniel Reed',
+                age: 32,
+                nationality: 'Australian',
+                voiceAccent: 'en-AU',
+                scenario: 'Gitgit Waterfall in Buleleng - Safety Briefing & Trail Rules',
+                personality: 'Independent, confident, adventurous, risk-taker',
+                level: 'Intermediate',
+                communication: 'Speaks fluent conversational English. Asks questions when he disagrees with safety rules.',
+                behaviorNotes: 'Challenges unnecessary rules, wants to take photos on wet rocks, asks why he should stay with group.',
+                targetExpressions: '• "Please stay on the marked path."\n• "You should keep a safe distance from the edge."\n• "You must follow the guide\'s instructions because the rocks may be slippery."\n• "For your safety, please stay with the group."',
+                challenge: 'Wants to step onto wet rocks for photos or hike off-trail because he trusts his abilities.',
+                systemPrompt: `You are Daniel Reed, a 32-year-old Australian solo hiker at Gitgit Waterfall in Buleleng.
+Personality: Independent, confident, adventurous, risk-taker.
+English level: Fluent, conversational English.
+
+Rules & Behavior:
+1. First Message ALWAYS start exact phrase: "Hey! I'm ready to explore the waterfall. Is it okay if I walk a little ahead to take some photos?"
+2. Challenge safety instructions politely: "But I'm a good hiker. Why do I need to stay with the group?" or "Those rocks look fine, why can't I step there?"
+3. RANDOM CHALLENGES to throw at the student guide:
+   - Ask to step onto a wet rock near the waterfall pool for a photograph.
+   - Ask what to do if heavy rain begins suddenly.
+   - Question why you should stay on the marked path.
+4. Give the student guide opportunities to explain the reason behind each rule.
+5. Keep responses direct, confident, and conversational (1-2 sentences).`
             },
-            child: {
-                key: 'child',
-                name: 'Leo (Age 8)',
-                tag: 'Child Tourist',
-                avatar: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=150&q=80',
-                scenario: 'Excited child asking about safety gear and ocean animals.',
-                initialMsg: "Hi Mr. Guide! Is the water super deep? Do I have to wear this big orange vest?",
-                responses: [
-                    "Cool! Will I see Nemo? What if a big wave comes?",
-                    "If I need help, can I blow this whistle really loud?",
-                    "Yay! I'm ready to swim now. Thank you!"
-                ]
+            parkers: {
+                id: 'parkers',
+                name: 'James & Emily Parker',
+                age: 34,
+                nationality: 'British',
+                voiceAccent: 'en-GB',
+                scenario: 'Lovina Beach Activity - Precautions for Children (Aged 4 & 7)',
+                personality: 'Friendly, careful, family-oriented, protective',
+                level: 'Intermediate',
+                communication: 'Asks practical questions about what their children may and may not do. Appreciates calm instructions.',
+                behaviorNotes: 'Parents ask questions on behalf of children. Asks about adult supervision, life equipment, and lost child procedures.',
+                targetExpressions: '• "Please make sure your children stay with you."\n• "Children must be supervised by an adult at all times."\n• "Please follow the designated swimming areas."\n• "If the conditions become unsafe, please leave the water and follow the guide\'s instructions."',
+                challenge: 'Concerns about children running on slippery paths, swimming unsupervised, or unexpected bad weather.',
+                systemPrompt: `You speak on behalf of James and Emily Parker, 34-year-old British parents visiting Lovina Beach with two young children (aged 4 and 7).
+Personality: Friendly, careful, protective, family-oriented.
+English level: Conversational English.
+
+Rules & Behavior:
+1. First Message ALWAYS start exact phrase: "Our children are excited to play in the water. Is it safe for them to swim while we sit on the beach?"
+2. Ask practical follow-up questions regarding your kids: "What should we do if one of our children accidentally walks away from us?" or "Do they need special life vests?"
+3. RANDOM CHALLENGES to throw at the student guide:
+   - Ask if the kids can play near the water without an adult holding their hands.
+   - Mention one child wants to run along a slippery path.
+   - Ask what to do if weather or sea conditions suddenly become unsafe.
+4. Appreciate calm, reassuring, and easy-to-follow explanations. Keep responses brief (1-2 sentences).`
             },
-            teen: {
-                key: 'teen',
-                name: 'Maya',
-                tag: 'Teenager Tourist',
-                avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
-                scenario: 'Independent teenager asking about selfie limits and water currents.',
-                initialMsg: "Hey! Can I take my underwater camera past the red buoy line?",
-                responses: [
-                    "Aw man, why is it restricted beyond the barriers?",
-                    "Got it. What's the signal if the current gets too strong?",
-                    "Cool, thanks for the heads up! I'll stay with the group."
-                ]
-            },
-            family: {
-                key: 'family',
-                name: 'The Miller Family',
-                tag: 'Small Family',
-                avatar: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=150&q=80',
-                scenario: 'Parents checking emergency evacuation protocols for their young kids.',
-                initialMsg: "Hello! We're here with our two young kids. What safety procedures should we follow as a family?",
-                responses: [
-                    "Good to know. Where is our designated evacuation point in case of a sudden weather change?",
-                    "What if one of the children loses their harness or life jacket lock?",
-                    "Thank you so much! We feel much safer taking our family out now."
-                ]
+            wijaya: {
+                id: 'wijaya',
+                name: 'The Wijaya Family',
+                age: '42 & 39',
+                nationality: 'Indonesian (English Speaking)',
+                voiceAccent: 'en-US',
+                scenario: 'Buleleng Nature Trail - Multi-generational Family Walk',
+                personality: 'Attentive, practical, respectful, multi-generational',
+                level: 'Intermediate to Advanced',
+                communication: 'Parents (Arif & Maya) ask main questions. Grandmother (Mrs. Sari, 70) or energetic kids (Rafi 9, Nia 6) raise concerns.',
+                behaviorNotes: 'Balancing walking pace for 70-year-old grandmother and active kids. Needs rest stops and handrail rules.',
+                targetExpressions: '• "Please walk at a comfortable pace and stay with the group."\n• "You can rest at the designated rest area."\n• "Please hold the handrail where one is provided."\n• "Parents should keep their children close to the group."\n• "If anyone feels unwell, please inform me immediately."',
+                challenge: 'Grandmother getting tired, children running ahead, slippery stairs navigation, and emergency evacuation prep.',
+                systemPrompt: `You represent The Wijaya Family visiting a nature trail in Buleleng:
+- Mr. Arif (father, 42, practical)
+- Mrs. Maya (mother, 39, attentive)
+- Mrs. Sari (grandmother, 70, friendly, walks slowly, needs rest)
+- Rafi (9) & Nia (6) (energetic children)
+
+Rules & Behavior:
+1. First Message ALWAYS start exact phrase: "My mother walks a little slowly, and the children are very energetic. What safety rules should we follow during the walk?"
+2. Alternate between family members in subsequent responses (e.g., Mrs. Sari asking for a rest or Mr. Arif asking about handrails).
+3. RANDOM CHALLENGES to throw at the student guide:
+   - Mrs. Sari: "Excuse me, what should I do if I feel tired halfway through the walk?"
+   - Mrs. Maya: "And what should we do if the children walk too far ahead of us near those slippery wooden steps?"
+   - Mr. Arif: "What should we do if someone feels unwell or the weather changes suddenly?"
+4. Encourage the student to communicate respectfully and provide inclusive guidance. Keep responses brief (1-2 sentences).`
             }
         };
 
-        let currentPersona = personas.senior;
-        let userMessageCount = 0;
+        // --- STATE MANAGEMENT ---
+        let activePersona = 'daniel';
+        let chatHistory = [];
+        let isRecognitionActive = false;
+        let recognition = null;
 
-        function switchPersona(key) {
-            currentPersona = personas[key];
-            userMessageCount = 0;
+        // --- INITIALIZATION ---
+        window.onload = function() {
+            selectPersona('daniel');
+            setupSpeechRecognition();
 
-            // Update UI Header
-            document.getElementById('persona-name').innerText = currentPersona.name;
-            document.getElementById('persona-tag').innerText = currentPersona.tag;
-            document.getElementById('persona-avatar').src = currentPersona.avatar;
-            document.getElementById('persona-scenario').innerText = `Scenario: ${currentPersona.scenario}`;
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        };
 
-            // Reset Chat Messages
-            const chatContainer = document.getElementById('chat-messages');
-            chatContainer.innerHTML = `
-                <div class="flex items-start space-x-3 max-w-[85%]">
-                    <img src="${currentPersona.avatar}" alt="${currentPersona.name}" class="w-8 h-8 rounded-full object-cover shrink-0 mt-1" />
-                    <div class="bg-white p-3.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm text-xs sm:text-sm text-slate-800 space-y-1">
-                        <p class="font-bold text-[11px] text-slate-500">${currentPersona.name}</p>
-                        <p>${currentPersona.initialMsg}</p>
-                    </div>
-                </div>
+        // --- PERSONA SELECTION ---
+        function selectPersona(personaId) {
+            activePersona = personaId;
+            const p = PERSONAS[personaId];
+
+            Object.keys(PERSONAS).forEach(id => {
+                const card = document.getElementById(`card-${id}`);
+                if (id === personaId) {
+                    card.classList.add('border-amber-500', 'bg-amber-50/60', 'shadow-sm');
+                    card.classList.remove('border-slate-200', 'bg-white');
+                } else {
+                    card.classList.remove('border-amber-500', 'bg-amber-50/60', 'shadow-sm');
+                    card.classList.add('border-slate-200', 'bg-white');
+                }
+            });
+
+            document.getElementById('persona-details-card').innerHTML = `
+                <p><strong>Name:</strong> ${p.name} (${p.age})</p>
+                <p><strong>Nationality:</strong> ${p.nationality}</p>
+                <p><strong>Scenario:</strong> ${p.scenario}</p>
+                <p><strong>Communication:</strong> ${p.communication}</p>
             `;
+
+            document.getElementById('persona-skills-card').innerHTML = `
+                <p><strong>Target Expressions:</strong></p>
+                <p class="text-[11px] text-slate-600 whitespace-pre-line leading-relaxed">${p.targetExpressions}</p>
+                <p class="text-amber-700 font-medium mt-1"><strong>Challenge:</strong> ${p.challenge}</p>
+            `;
+
+            document.getElementById('chat-header-name').innerText = `${p.name} • Unit 2`;
+            document.getElementById('chat-header-avatar').innerText = p.name.split(' ').map(n=>n[0]).join('');
+
+            resetConversation();
         }
 
-        function handleSendMessage(event) {
-            event.preventDefault();
+        function resetConversation() {
+            const p = PERSONAS[activePersona];
+            chatHistory = [];
+
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML = '';
+
+            let initialGreeting = "";
+            if(p.id === 'daniel') initialGreeting = "Hey! I'm ready to explore the waterfall. Is it okay if I walk a little ahead to take some photos?";
+            else if(p.id === 'parkers') initialGreeting = "Our children are excited to play in the water. Is it safe for them to swim while we sit on the beach?";
+            else if(p.id === 'wijaya') initialGreeting = "My mother walks a little slowly, and the children are very energetic. What safety rules should we follow during the walk?";
+
+            addChatMessage('bot', initialGreeting, p.name);
+            chatHistory.push({ role: 'model', parts: [{ text: initialGreeting }] });
+
+            if (document.getElementById('tts-toggle').checked) {
+                speakText(initialGreeting, p.voiceAccent);
+            }
+        }
+
+        // --- CHAT RENDERING ---
+        function addChatMessage(sender, text, name = '') {
+            const chatLog = document.getElementById('chat-messages');
+            const isUser = sender === 'user';
+
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `flex gap-3 ${isUser ? 'justify-end' : 'justify-start'}`;
+
+            const avatarBg = isUser ? 'bg-navy-900 text-amber-400' : 'bg-slate-200 text-slate-800 border border-slate-300';
+            const msgBg = isUser ? 'bg-navy-900 text-white font-medium shadow-md' : 'bg-white border-slate-200 text-slate-800 shadow-sm';
+
+            msgDiv.innerHTML = `
+                ${!isUser ? `<div class="w-8 h-8 rounded-full ${avatarBg} font-bold text-xs flex items-center justify-center shrink-0 mt-1">${name.split(' ').map(n=>n[0]).join('')}</div>` : ''}
+                <div class="max-w-[80%] space-y-1">
+                    <div class="flex items-center gap-2 ${isUser ? 'justify-end' : ''}">
+                        <span class="text-[11px] font-medium text-slate-500">${isUser ? 'You (Tour Guide)' : name}</span>
+                    </div>
+                    <div class="p-3.5 rounded-2xl border text-xs md:text-sm ${msgBg} leading-relaxed">
+                        ${escapeHtml(text)}
+                    </div>
+                </div>
+                ${isUser ? `<div class="w-8 h-8 rounded-full ${avatarBg} font-bold text-xs flex items-center justify-center shrink-0 mt-1"><i class="fa-solid fa-user"></i></div>` : ''}
+            `;
+
+            chatLog.appendChild(msgDiv);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+
+        // --- SUBMISSION & GEMINI API CALL ---
+        async function handleUserSubmit(e) {
+            e.preventDefault();
             const inputEl = document.getElementById('user-input');
             const text = inputEl.value.trim();
-
             if (!text) return;
 
-            userMessageCount++;
-
-            const chatContainer = document.getElementById('chat-messages');
-
-            // Render User Response
-            chatContainer.innerHTML += `
-                <div class="flex items-start justify-end space-x-3">
-                    <div class="bg-teal-800 text-white p-3.5 rounded-2xl rounded-tr-none shadow-sm text-xs sm:text-sm space-y-1 max-w-[85%]">
-                        <p class="font-bold text-[11px] text-teal-200">You (Tour Guide)</p>
-                        <p>${text}</p>
-                    </div>
-                </div>
-            `;
-
             inputEl.value = '';
-            chatContainer.scrollTop = chatContainer.scrollHeight;
+            addChatMessage('user', text);
 
-            // Trigger Bot Response with Delay
-            setTimeout(() => {
-                let botReply = "Thank you for explaining the safety procedures so clearly!";
-                if (userMessageCount <= currentPersona.responses.length) {
-                    botReply = currentPersona.responses[userMessageCount - 1];
+            chatHistory.push({ role: 'user', parts: [{ text: text }] });
+
+            const chatLog = document.getElementById('chat-messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typing-indicator';
+            typingDiv.className = 'flex gap-2 items-center text-xs text-slate-500 italic p-2';
+            typingDiv.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin text-amber-600"></i> ${PERSONAS[activePersona].name} is thinking...`;
+            chatLog.appendChild(typingDiv);
+            chatLog.scrollTop = chatLog.scrollHeight;
+
+            try {
+                const responseText = await fetchGeminiResponse();
+                document.getElementById('typing-indicator')?.remove();
+
+                addChatMessage('bot', responseText, PERSONAS[activePersona].name);
+                chatHistory.push({ role: 'model', parts: [{ text: responseText }] });
+
+                if (document.getElementById('tts-toggle').checked) {
+                    speakText(responseText, PERSONAS[activePersona].voiceAccent);
                 }
-
-                chatContainer.innerHTML += `
-                    <div class="flex items-start space-x-3 max-w-[85%]">
-                        <img src="${currentPersona.avatar}" alt="${currentPersona.name}" class="w-8 h-8 rounded-full object-cover shrink-0 mt-1" />
-                        <div class="bg-white p-3.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm text-xs sm:text-sm text-slate-800 space-y-1">
-                            <p class="font-bold text-[11px] text-slate-500">${currentPersona.name}</p>
-                            <p>${botReply}</p>
-                        </div>
-                    </div>
-                `;
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            }, 1000);
-        }
-
-        function openAssessmentModal() {
-            let scoreAcc = 0;
-            let scoreExp = 0;
-            let scoreInt = 0;
-
-            let goodFeedback = "";
-            let improveFeedback = "";
-
-            const actionBtn = document.getElementById('action-next-persona-btn');
-
-            if (userMessageCount === 0) {
-                // SKENARIO 1: Pengguna BELUM chatting sama sekali
-                scoreAcc = 0;
-                scoreExp = 0;
-                scoreInt = 0;
-
-                goodFeedback = "No conversation recorded. You ended the simulation before explaining safety instructions.";
-                improveFeedback = "Please type and send responses explaining safety equipment (life jacket, whistle) before clicking Finish.";
-
-                if (actionBtn) {
-                    actionBtn.innerText = "Try Next Tourist Persona";
-                    actionBtn.onclick = function() {
-                        // Beralih ke persona berikutnya secara berurutan
-                        const personaKeys = ['senior', 'child', 'teen', 'family'];
-                        let currentIndex = personaKeys.indexOf(currentPersona.key);
-                        let nextIndex = (currentIndex + 1) % personaKeys.length;
-                        
-                        document.getElementById('persona-select').value = personaKeys[nextIndex];
-                        switchPersona(personaKeys[nextIndex]);
-                        closeAssessmentModal();
-                    };
-                }
-            } else {
-                // SKENARIO 2: Pengguna SUDAH chatting dan menyelesaikan simulasi
-                scoreAcc = Math.min(100, Math.max(50, userMessageCount * 25));
-                scoreExp = Math.min(100, Math.max(50, userMessageCount * 22));
-                scoreInt = Math.min(100, Math.max(50, userMessageCount * 20));
-
-                goodFeedback = `You successfully adapted your safety instructions for ${currentPersona.name} (${currentPersona.tag}) and emphasized key safety gear.`;
-                improveFeedback = "Always remember to mention emergency signals (whistle), evacuation points, and hold onto handrails when moving.";
-
-                if (actionBtn) {
-                    actionBtn.innerText = "Back to Dashboard ➔";
-                    actionBtn.onclick = function() {
-                        window.location.href = "dashboard.html";
-                    };
-                }
+            } catch (err) {
+                console.error("Gemini API Error details:", err);
+                document.getElementById('typing-indicator')?.remove();
+                addChatMessage('bot', "Sorry, I didn't quite catch those safety instructions. Could you repeat?", PERSONAS[activePersona].name);
             }
-
-            // Update Tampilan Angka Skor
-            document.getElementById('score-accuracy').innerText = `${scoreAcc}/100`;
-            document.getElementById('score-expression').innerText = `${scoreExp}/100`;
-            document.getElementById('score-interaction').innerText = `${scoreInt}/100`;
-
-            // Update Teks Feedback
-            document.getElementById('feedback-good').innerText = goodFeedback;
-            document.getElementById('feedback-improve').innerText = improveFeedback;
-
-            // Tampilkan Modal
-            document.getElementById('assessment-modal').classList.remove('hidden');
         }
 
-        function closeAssessmentModal() {
-            document.getElementById('assessment-modal').classList.add('hidden');
+        async function fetchGeminiResponse() {
+            const apiKey = "AQ.Ab8RN6JKqNJ2NLKJE_s-5xBsj1H9D8-8yIWMVXicYlEgOAYt3g";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [
+                    {
+                        role: "user",
+                        parts: [{ text: PERSONAS[activePersona].systemPrompt }]
+                    },
+                    ...chatHistory
+                ]
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json();
+            
+            if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+                return data.candidates[0].content.parts[0].text;
+            } else {
+                console.error("API Payload Response:", data);
+                throw new Error("Invalid API response format");
+            }
         }
 
-        window.onload = function() {
-            switchPersona('senior');
-        };
+        // --- VOICE RECOGNITION (WEB SPEECH API) ---
+        function setupSpeechRecognition() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = 'en-US';
+
+                recognition.onstart = function() {
+                    isRecognitionActive = true;
+                    document.getElementById('speech-status').classList.remove('hidden');
+                    document.getElementById('btn-mic').classList.add('bg-amber-500', 'text-slate-950');
+                };
+
+                recognition.onend = function() {
+                    isRecognitionActive = false;
+                    document.getElementById('speech-status').classList.add('hidden');
+                    document.getElementById('btn-mic').classList.remove('bg-amber-500', 'text-slate-950');
+                };
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('user-input').value = transcript;
+                };
+            }
+        }
+
+        function toggleMic() {
+            if (!recognition) {
+                alert("Speech recognition is not supported in this browser. Please use Google Chrome.");
+                return;
+            }
+            if (isRecognitionActive) {
+                recognition.stop();
+            } else {
+                recognition.start();
+            }
+        }
+
+        // --- TEXT TO SPEECH (TTS) ---
+        function speakText(text, accent) {
+            if (!('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = accent || 'en-US';
+            utterance.rate = 0.95;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // --- MODAL CONTROLS ---
+        function toggleMapModal() {
+            const modal = document.getElementById('map-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function toggleEvalModal() {
+            const modal = document.getElementById('eval-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function evaluatePerformance() {
+            toggleEvalModal();
+        }
     </script>
 </body>
 </html>
